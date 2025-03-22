@@ -1,6 +1,15 @@
-body {
-    background-color: #f5f5f7;
+body{
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+/*transition*/
+body {
+    transition: opacity 0.5s ease;
+}
+
+body.fade-out {
+    opacity: 0;
 }
 
 .login-card {
@@ -10,12 +19,19 @@ body {
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
     width: 100%;
     max-width: 400px;
+    opacity: 90%;
+
 }
 
 .form-control {
     background-color: #f0f0f5;
     border: none;
     border-radius: 0.75rem;
+}
+
+.form-control.error {
+    background-color: #f8d7da; 
+    border: 1px solid #dc3545;  
 }
 
 .form-control:focus {
@@ -33,3 +49,50 @@ body {
 .btn-apple:hover {
     background-color: #005bb5;
 }
+
+.section-content {
+    display: none;
+}
+  
+.section-content.active {
+    display: block;
+}
+
+.section-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 0.5rem;
+}
+
+/** Patient page **/
+.accordion-button::after {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-chevron-down' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
+  }
+  
+  .accordion-button {
+    padding: 1rem;
+    font-size: 1rem;
+    background-color: #f8f9fa;
+  }
+  
+  .accordion-body label {
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+  }
+  
+  .accordion-body {
+    background-color: #fff;
+    padding: 1rem;
+    border-top: 1px solid #dee2e6;
+  }
+  
+  .form-check {
+    margin-top: 1rem;
+  }
+  
+  .row.g-3 > div {
+    padding: 0 15px;
+  }

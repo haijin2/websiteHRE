@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Patient Information</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="login.js"></script>
+</head>
+
+<body>
+  <!-- Navbar / Hamburger Menu -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm mb-4">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Patient Record</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link menu-link active" href="#" data-target="patient-info">Patient Information</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link menu-link" href="#" data-target="physical-assessment">Physical Assessment</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link menu-link" href="#" data-target="nursing-diagnosis">Nursing Diagnosis</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link menu-link" href="#" data-target="appointments">Appointments</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container py-3">
+    <!-- Sections -->
+    <div id="patient-info" class="section-content active">
+      <div class="section-title">Patient Information</div>
+      <form>
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label class="form-label">Name</label>
+            <input type="text" class="form-control">
+          </div>
+          <div class="col-md-3">
+            <label class="form-label">Age</label>
+            <input type="number" class="form-control">
+          </div>
+          <div class="col-md-3">
+            <label class="form-label">Gender</label>
+            <select class="form-select">
+              <option selected disabled>Choose...</option>
+              <option>Male</option>
+              <option>Female</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <div class="col-md-4">
+            <label class="form-label">Height (cm)</label>
+            <input type="text" class="form-control">
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">Weight (kg)</label>
+            <input type="text" class="form-control">
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">Contact Information</label>
+            <input type="text" class="form-control">
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label">Occupation</label>
+            <input type="text" class="form-control">
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Lifestyle (Alcohol, Cigarette)</label>
+            <input type="text" class="form-control">
+          </div>
+
+          <div class="col-12">
+            <label class="form-label">Immunizations</label>
+            <textarea class="form-control" rows="3"></textarea>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div id="physical-assessment" class="section-content">
+      <div class="section-title">Physical Assessment</div><br>
+      <div class="container">
+        <div class="row g-3">
+          <!-- LEFT COLUMN -->
+          <div class="col-md-6">
+            <div class="accordion accordion-flush" id="leftAccordion">
+      
+              <!-- neuro Section -->
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#neuroCollapse">Neuro</button>
+                </h2>
+                <div id="neuroCollapse" class="accordion-collapse collapse show">
+                  <div class="accordion-body">
+                    <label>Mental Status:</label>
+                    <input type="text" class="form-control mb-2">
+                    <label>Pupils:</label>
+                    <input type="text" class="form-control mb-2">
+                    <label>Orientation:</label>
+                    <input type="text" class="form-control mb-2">
+                    <label>Pupil Size - Right:</label>
+                    <input type="number" class="form-control mb-2">
+                    <label>Pupil Size - Left:</label>
+                    <input type="number" class="form-control mb-2">
+                    <label>Affect:</label>
+                    <input type="text" class="form-control mb-2">
+                  </div>
+                </div>
+              </div>
+      
+              <!-- cardiovascular Section -->
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#cardioCollapse">Cardiovascular</button>
+                </h2>
+                <div id="cardioCollapse" class="accordion-collapse collapse show">
+                  <div class="accordion-body">
+                    <label>Central Pulses:</label>
+                    <input type="text" class="form-control mb-2">
+                    <label>Heart Sounds:</label>
+                    <input type="text" class="form-control mb-2">
+                    <label>Peripheral Pulses:</label>
+                    <input type="text" class="form-control mb-2">
+                  </div>
+                </div>
+              </div>
+      
+              <!-- abdominal Section -->
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#abdominalCollapse">Abdominal / GI / GU</button>
+                </h2>
+                <div id="abdominalCollapse" class="accordion-collapse collapse show">
+                  <div class="accordion-body">
+                    <label>Abdomen is:</label>
+                    <input type="text" class="form-control mb-2">
+                    <label>Bowel Sounds:</label>
+                    <input type="text" class="form-control mb-2">
+                    <label>Quadrants:</label>
+                    <input type="text" class="form-control mb-2">
+                    <label>Last BM/Date:</label>
+                    <input type="date" class="form-control mb-2">
+                    <label>Stool Consistency:</label>
+                    <input type="text" class="form-control mb-2">
+                  </div>
+                </div>
+              </div>
+      
+              <!-- musculoskeletal Section -->
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#musculoCollapse">Musculoskeletal</button>
+                </h2>
+                <div id="musculoCollapse" class="accordion-collapse collapse show">
+                  <div class="accordion-body">
+                    <label>Movement:</label>
+                    <input type="text" class="form-control mb-2">
+                    <label>Contracture:</label>
+                    <input type="text" class="form-control mb-2">
+                    <label>Location:</label>
+                    <input type="text" class="form-control mb-2">
+                  </div>
+                </div>
+              </div>
+      
+              <!-- glasgow Coma Scale Section -->
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#glasgowCollapse">Glasgow Coma Scale</button>
+                </h2>
+                <div id="glasgowCollapse" class="accordion-collapse collapse show">
+                  <div class="accordion-body">
+                    <label>Eye Opening Response:</label>
+                    <input type="text" class="form-control mb-2">
+                    <label>Verbal Response:</label>
+                    <input type="text" class="form-control mb-2">
+                    <label>Motor Response:</label>
+                    <input type="text" class="form-control mb-2">
+                  </div>
+                </div>
+              </div>
+      
+              <!-- Respiratory Section -->
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#respCollapse">Respiratory</button>
+                </h2>
+                <div id="respCollapse" class="accordion-collapse collapse show">
+                  <div class="accordion-body">
+                    <label>Effort:</label>
+                    <input type="text" class="form-control mb-2">
+                    <label>Sounds - Left:</label>
+                    <input type="text" class="form-control mb-2">
+                    <label>Sounds - Right:</label>
+                    <input type="text" class="form-control mb-2">
+                    <label>Cough:</label>
+                    <input type="text" class="form-control mb-2">
+                  </div>
+                </div>
+              </div>
+      
+            </div> <!-- End of leftAccordion -->
+          </div> <!-- End of Left Column -->
+      
+          <!-- RIGHT COLUMN -->
+          <div class="col-md-6">
+            <div class="accordion accordion-flush" id="rightAccordion">
+      
+              <!-- skin Section -->
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#skinCollapse">Integumentary</button>
+                </h2>
+                <div id="skinCollapse" class="accordion-collapse collapse show">
+                  <div class="accordion-body">
+                    <label>Color:</label>
+                    <input type="text" class="form-control mb-2">
+                    <label>Temperature (c):</label>
+                    <input type="number" class="form-control mb-2">
+                    <label>Type of Wound:</label>
+                    <input type="text" class="form-control mb-2">
+                  </div>
+                </div>
+              </div>
+      
+              <!-- wounds sections -->
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#w1Collapse">Wounds / Pressure Area #1</button>
+                </h2>
+                <div id="w1Collapse" class="accordion-collapse collapse show">
+                  <div class="accordion-body">
+                    <label>Location:</label>
+                    <input type="text" class="form-control mb-2">
+                    <label>Stage:</label>
+                    <input type="text" class="form-control mb-2">
+                    <label>Picture:</label>
+                    <input type="file" class="form-control mb-2">
+                  </div>
+                </div>
+              </div>
+      
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#w2Collapse">Wounds / Pressure Area #2</button>
+                </h2>
+                <div id="w2Collapse" class="accordion-collapse collapse show">
+                  <div class="accordion-body">
+                    <label>Location:</label>
+                    <input type="text" class="form-control mb-2">
+                    <label>Stage:</label>
+                    <input type="text" class="form-control mb-2">
+                    <label>Picture:</label>
+                    <input type="file" class="form-control mb-2">
+                  </div>
+                </div>
+              </div>
+      
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#w3Collapse">Wounds / Pressure Area #3</button>
+                </h2>
+                <div id="w3Collapse" class="accordion-collapse collapse show">
+                  <div class="accordion-body">
+                    <label>Location:</label>
+                    <input type="text" class="form-control mb-2">
+                    <label>Stage:</label>
+                    <input type="text" class="form-control mb-2">
+                    <label>Picture:</label>
+                    <input type="file" class="form-control mb-2">
+                  </div>
+                </div>
+              </div>
+      
+              <!-- neurovascular Extremities Section -->
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#NeurovascularCollapse">Neurovascular Extremities</button>
+                </h2>
+                <div id="NeurovascularCollapse" class="accordion-collapse collapse show">
+                  <div class="accordion-body">
+                    <label>Extremity:</label>
+                    <input type="text" class="form-control mb-2">
+                    <label>Pain (0-10):</label>
+                    <input type="number" class="form-control mb-2" id ="painInput" min="0" max="10" step="1">
+                    <label>Pulses:</label>
+                    <input type="text" class="form-control mb-2">
+                    <label>Color:</label>
+                    <input type="text" class="form-control mb-2">
+                    <label>Movement:</label>
+                    <input type="text" class="form-control mb-2">
+                    <label>Sensation:</label>
+                    <input type="text" class="form-control mb-2">
+                    <label>Temperature (c):</label>
+                    <input type="number" class="form-control mb-2">
+                  </div>
+                </div>
+              </div>
+      
+            </div> <!-- End of rightAccordion -->
+          </div> <!-- End of Right Column -->
+        </div> <!-- End of Row -->
+      </div> <!-- End of Container -->
+    </div>
+
+
+    <div id="nursing-diagnosis" class="section-content">
+      <div class="section-title">Nursing Diagnosis</div>
+      <p class="text-muted">Nursing Diagnosis content goes here...</p>
+    </div>
+
+    <div id="appointments" class="section-content">
+      <div class="section-title">Appointments</div>
+      <p class="text-muted">Appointments content goes here...</p>
+    </div>
+  </div>
+
+</body>
+
+</html>
