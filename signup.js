@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-analytics.js";
-import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
+import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -24,10 +24,10 @@ const auth = getAuth(app);
 
 // Sign-up logic with password confirmation
 document.addEventListener('DOMContentLoaded', () => {
-  const form = document.querySelector('#login-form'); // Use unique ID
-  const emailInput = document.getElementById('username');
-  const passwordInput = document.getElementById('password');
-
+  const form = document.querySelector('#signup-form'); // Use unique ID
+  const emailInput = document.getElementById('signup-email');
+  const passwordInput = document.getElementById('signup-password');
+  const confirmPasswordInput = document.getElementById('confirm-password');
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();
@@ -35,18 +35,27 @@ document.addEventListener('DOMContentLoaded', () => {
     // Reset errors
     emailInput.classList.remove('error');
     passwordInput.classList.remove('error');
-
+    confirmPasswordInput.classList.remove('error');
 
     const email = emailInput.value.trim();
     const password = passwordInput.value.trim();
- 
+    const confirmPassword = confirmPasswordInput.value.trim();
+
+    // Check if passwords match
+    if (password !== confirmPassword) {
+      alert('Passwords do not match!');
+      passwordInput.classList.add('error');
+      confirmPasswordInput.classList.add('error');
+      return;
+    }
+
     // Create user with Firebase
-    signInWithEmailAndPassword(auth, email, password)
+    createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        alert('Login Successfully!');
+        alert('Account Created Successfully!');
         document.body.classList.add('fade-out');
         setTimeout(() => {
-          window.location.href = 'patient.html';  // Redirect after success
+          window.location.href = 'index.html';  // Redirect after success
         }, 500);
       })
       .catch((error) => {
@@ -60,4 +69,5 @@ document.addEventListener('DOMContentLoaded', () => {
   // Remove error styles while typing
   emailInput.addEventListener('input', () => emailInput.classList.remove('error'));
   passwordInput.addEventListener('input', () => passwordInput.classList.remove('error'));
+  confirmPasswordInput.addEventListener('input', () => confirmPasswordInput.classList.remove('error'));
 });
