@@ -6,6 +6,10 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="login.js"></script>
+  <script src="navigation.js"></script>
+  <script src="transition.js"></script>
+  <script src="validation.js"></script>
+  <script src="calendar.js"></script>
 </head>
 
 <body>
@@ -323,9 +327,26 @@
     </div>
 
     <div id="appointments" class="section-content">
-      <div class="section-title">Appointments</div>
-      <p class="text-muted">Appointments content goes here...</p>
+      <div class="section-title">Schedule Appointment</div>
+    
+      <form>
+        <div class="mb-4">
+          <label for="appointmentDateTime" class="form-label">Select Date & Time</label>
+          <input type="text" class="form-control" id="appointmentDateTime" placeholder="Pick a date & time" required>
+        </div>
+    
+        <div class="mb-4">
+          <label for="appointmentReason" class="form-label">Reason for Appointment</label>
+          <textarea class="form-control" id="appointmentReason" rows="3" placeholder="Optional"></textarea>
+        </div>
+    
+        <div class="d-grid">
+          <button type="submit" class="btn btn-apple">Book Appointment</button>
+        </div>
+      </form>
     </div>
+    
+
   </div>
 
 </body>

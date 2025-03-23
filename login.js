@@ -1,4 +1,3 @@
-
 //Index.html
 document.addEventListener('DOMContentLoaded', function () {
     const form = document.querySelector('form');
@@ -36,43 +35,7 @@ document.addEventListener('DOMContentLoaded', function () {
     usernameInput.addEventListener('input', () => username.classList.remove('error'));
     passwordInput.addEventListener('input', () => password.classList.remove('error'));
   });
-//patient.html (navigation/toggle tabs)
-document.addEventListener('DOMContentLoaded', function () {
-    const menuLinks = document.querySelectorAll('.menu-link');
-    const sections = document.querySelectorAll('.section-content');
-  
-    menuLinks.forEach(link => {
-      link.addEventListener('click', (e) => {
-        e.preventDefault();
-        const target = link.getAttribute('data-target');
-  
-        // remove active class from all links and sections
-        menuLinks.forEach(l => l.classList.remove('active'));
-        sections.forEach(sec => sec.classList.remove('active'));
-  
-        // add active class to clicked link and its section
-        link.classList.add('active');
-        document.getElementById(target).classList.add('active');
-      });
-    });
-  });
 
-//patient.html (accordion)
-document.querySelectorAll('.toggle-btn').forEach(btn => {
-    btn.addEventListener('click', function() {
-      setTimeout(() => {
-        this.textContent = this.getAttribute('aria-expanded') === 'true' ? '▲' : '▼';
-      }, 200); 
-    });
-  });
-//patient.html (accordion input 1-10 only) 
-document.addEventListener('DOMContentLoaded', function () {
-  const painInput = document.getElementById('painInput');
-  painInput.addEventListener('input', function () {
-    if (this.value > 10) this.value = 10;
-    if (this.value < 1) this.value = 1;
-});
-  });
 // validation css signup
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.querySelector('form');
@@ -107,31 +70,3 @@ document.addEventListener('DOMContentLoaded', () => {
   confirmPasswordInput.addEventListener('input', () => confirmPasswordInput.classList.remove('error'));
 });
 
-//transition
-document.addEventListener('DOMContentLoaded', () => {
-  const loginLink = document.getElementById('login-link');
-
-  // login
-  loginLink.addEventListener('click', function (e) {
-    e.preventDefault();
-    document.body.classList.add('fade-out');
-    setTimeout(() => {
-      window.location.href = loginLink.getAttribute('href');
-    }, 500);
-  });
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-  const signupLink = document.getElementById('signup-link');
-
-  // signup
-  signupLink.addEventListener('click', function (e) {
-    e.preventDefault();
-    document.body.classList.add('fade-out');
-    setTimeout(() => {
-      window.location.href = signupLink.getAttribute('href');
-    }, 500);
-  });
-});
-
-//buttons next / back
