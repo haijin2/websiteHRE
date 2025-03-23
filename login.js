@@ -1,4 +1,5 @@
 
+//Index.html
 document.addEventListener('DOMContentLoaded', function () {
     const form = document.querySelector('form');
     const usernameInput = document.getElementById('username');
@@ -14,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const validUsername = 'titi@example.com';
       const validPassword = '12345';
 
-    //validation
+    //validation css
       usernameInput.classList.remove('error');
       passwordInput.classList.remove('error');
   
@@ -35,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function () {
     usernameInput.addEventListener('input', () => username.classList.remove('error'));
     passwordInput.addEventListener('input', () => password.classList.remove('error'));
   });
-  
+//patient.html (navigation/toggle tabs)
 document.addEventListener('DOMContentLoaded', function () {
     const menuLinks = document.querySelectorAll('.menu-link');
     const sections = document.querySelectorAll('.section-content');
@@ -56,6 +57,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
+//patient.html (accordion)
 document.querySelectorAll('.toggle-btn').forEach(btn => {
     btn.addEventListener('click', function() {
       setTimeout(() => {
@@ -63,7 +65,7 @@ document.querySelectorAll('.toggle-btn').forEach(btn => {
       }, 200); 
     });
   });
-  
+//patient.html (accordion input 1-10 only) 
 document.addEventListener('DOMContentLoaded', function () {
   const painInput = document.getElementById('painInput');
   painInput.addEventListener('input', function () {
@@ -71,3 +73,65 @@ document.addEventListener('DOMContentLoaded', function () {
     if (this.value < 1) this.value = 1;
 });
   });
+// validation css signup
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.querySelector('form');
+  const passwordInput = document.getElementById('signup-password');
+  const confirmPasswordInput = document.getElementById('confirm-password');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault(); 
+   
+    const password = passwordInput.value.trim();
+    const confirmPassword = confirmPasswordInput.value.trim();
+
+
+    passwordInput.classList.remove('error');
+    confirmPasswordInput.classList.remove('error');
+
+    if (password === confirmPassword) {
+      alert('Account Created!');
+      document.body.classList.add('fade-out');
+      setTimeout(() => {
+        window.location.href = 'index.html';  
+      }, 500);
+    } else {
+
+      alert('Passwords do not match!');
+      passwordInput.classList.add('error');
+      confirmPasswordInput.classList.add('error');
+    }
+  });
+
+  passwordInput.addEventListener('input', () => passwordInput.classList.remove('error'));
+  confirmPasswordInput.addEventListener('input', () => confirmPasswordInput.classList.remove('error'));
+});
+
+//transition
+document.addEventListener('DOMContentLoaded', () => {
+  const loginLink = document.getElementById('login-link');
+
+  // login
+  loginLink.addEventListener('click', function (e) {
+    e.preventDefault();
+    document.body.classList.add('fade-out');
+    setTimeout(() => {
+      window.location.href = loginLink.getAttribute('href');
+    }, 500);
+  });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  const signupLink = document.getElementById('signup-link');
+
+  // signup
+  signupLink.addEventListener('click', function (e) {
+    e.preventDefault();
+    document.body.classList.add('fade-out');
+    setTimeout(() => {
+      window.location.href = signupLink.getAttribute('href');
+    }, 500);
+  });
+});
+
+//buttons next / back
