@@ -24,6 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Create user with Firebase
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
+        const user = auth.currentUser;
         alert('Login Successfully!');
         document.body.classList.add('fade-out');
         setTimeout(() => {

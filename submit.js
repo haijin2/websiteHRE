@@ -1,5 +1,6 @@
 import { database, auth } from './firebase-config.js'; // Import database
-import { ref, set, push } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-database.js";
+import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
+import { ref, set, push, onValue } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-database.js";
 
 
 function savePatientInfo() {
@@ -157,14 +158,175 @@ function savePatientInfo() {
     });
 }
 
+function getAllPatients() {
+  const user = auth.currentUser;
+
+  if (!user) {
+    console.error("User is not authenticated.");
+    alert("Please log in to get patients information.");
+    return Promise.reject("User not authenticated");
+  }
+
+  const patientsRef = ref(database, `patients/${user.uid}`);
+
+  return new Promise((resolve, reject) => {
+    onValue(patientsRef, (snapshot) => {
+      const patientsData = snapshot.val();
+      if (patientsData) {
+        resolve(patientsData);
+      } else {
+        resolve({}); // Return empty object, if no patients exist.
+      }
+    }, (error) => {
+      reject(error);
+      alert('Error retrieving patients data');
+    });
+  });
+}
+
+function populatePatientSelect(user) {
+  const patientSelect = document.getElementById('patient-select');
+
+  if (!user) {
+      patientSelect.innerHTML = '<option value="">Please log in</option>';
+      console.log("User is not logged in");
+      return;
+  }
+
+  const patientsRef = ref(database, `patients/${user.uid}`);
+
+  onValue(patientsRef, (snapshot) => {
+      const patientsData = snapshot.val();
+      patientSelect.innerHTML = '<option value="">Select a Patient</option>'; // Clear and add initial option
+      if (patientsData && Object.keys(patientsData).length > 0) {
+          for (const patientId in patientsData) {
+              const patient = patientsData[patientId];
+              const option = document.createElement('option');
+              option.value = patientId;
+              option.textContent = `${patient.givenName} ${patient.lastName}`;
+              patientSelect.appendChild(option);
+          }
+      }
+  }, (error) => {
+      console.error("Error populating patient select:", error);
+      patientSelect.innerHTML = '<option value="">Error loading patients</option>';
+  });
+}
+
+function displayPatientSummary(patientId) {
+  const user = auth.currentUser;
+  if (!user) {
+      alert("Please log in.");
+      return;
+  }
+
+  const patientRef = ref(database, `patients/${user.uid}/${patientId}`);
+
+  onValue(patientRef, (snapshot) => {
+      const patientData = snapshot.val();
+      if (patientData) {
+          // Populate summary inputs with patient data
+          document.getElementById('summary-given-name').value = patientData.givenName || '';
+          document.getElementById('summary-middle-name').value = patientData.middleName || '';
+          document.getElementById('summary-last-name').value = patientData.lastName || '';
+          document.getElementById('summary-age').value = patientData.age || '';
+          document.getElementById('summary-gender').value = patientData.gender || '';
+          document.getElementById('summary-contact').value = patientData.contactInfo || '';
+          document.getElementById('summary-height').value = patientData.height || '';
+          document.getElementById('summary-weight').value = patientData.weight || '';
+          document.getElementById('summary-occupation').value = patientData.occupation || '';
+          document.getElementById('summary-lifestyle').value = patientData.lifestyle || '';
+          document.getElementById('summary-immunization').value = patientData.immunization || '';
+
+          document.getElementById('summary-mental').value = patientData.mentalStatus || '';
+          document.getElementById('summary-orientation').value = patientData.orientation || '';
+          document.getElementById('summary-pupils').value = patientData.pupils || '';
+          document.getElementById('summary-pupil-right').value = patientData.pupilSizeRight || '';
+          document.getElementById('summary-pupil-left').value = patientData.pupilSizeLeft || '';
+          document.getElementById('summary-affect').value = patientData.affect || '';
+
+          document.getElementById('summary-central-pulses').value = patientData.centralPulses || '';
+          document.getElementById('summary-heart-sounds').value = patientData.heartSounds || '';
+          document.getElementById('summary-peripheral-pulses').value = patientData.peripheralPulses || '';
+
+          document.getElementById('summary-abdomen').value = patientData.abdomenIs || '';
+          document.getElementById('summary-bowel-sounds').value = patientData.bowelSounds || '';
+          document.getElementById('summary-quadrants').value = patientData.quadrants || '';
+          document.getElementById('summary-bm-date').value = patientData.lastBmDate || '';
+          document.getElementById('summary-stool').value = patientData.stoolConsistency || '';
+
+          document.getElementById('summary-movement').value = patientData.movement || '';
+          document.getElementById('summary-contracture').value = patientData.contracture || '';
+          document.getElementById('summary-musculo-location').value = patientData.musculoLocation || '';
+
+          document.getElementById('summary-eye').value = patientData.eyeResponse || '';
+          document.getElementById('summary-verbal').value = patientData.verbalResponse || '';
+          document.getElementById('summary-motor').value = patientData.motorResponse || '';
+
+          document.getElementById('summary-effort').value = patientData.effort || '';
+          document.getElementById('summary-sounds-left').value = patientData.soundsLeft || '';
+          document.getElementById('summary-sounds-right').value = patientData.soundsRight || '';
+          document.getElementById('summary-cough').value = patientData.cough || '';
+
+          document.getElementById('summary-skin-color').value = patientData.skinColor || '';
+          document.getElementById('summary-skin-temp').value = patientData.skinTemp || '';
+          document.getElementById('summary-wound1').value = patientData.wound1Location || '';
+          document.getElementById('summary-wound2').value = patientData.wound2Location || '';
+          document.getElementById('summary-wound3').value = patientData.wound3Location || '';
+
+          document.getElementById('summary-extremity').value = patientData.extremity || '';
+          document.getElementById('summary-pain').value = patientData.pain || '';
+          document.getElementById('summary-pulses').value = patientData.pulses || '';
+          document.getElementById('summary-neuro-color').value = patientData.neuroColor || '';
+          document.getElementById('summary-neuro-movement').value = patientData.neuroMovement || '';
+          document.getElementById('summary-sensation').value = patientData.sensation || '';
+          document.getElementById('summary-neuro-temp').value = patientData.neuroTemp || '';
+
+          document.getElementById('summary-bp').value = patientData.bloodPressure || '';
+          document.getElementById('summary-hr').value = patientData.heartRate || '';
+          document.getElementById('summary-pr').value = patientData.pulseRate || '';
+          document.getElementById('summary-temp').value = patientData.temperature || '';
+          document.getElementById('summary-oxy').value = patientData.oxySat || '';
+
+          document.getElementById('summary-appt-date').value = patientData.appointmentDateTime || '';
+          document.getElementById('summary-appt-reason').value = patientData.appointmentReason || '';
+
+      } else {
+          alert("Patient data not found.");
+      }
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   const submitBtn = document.getElementById('submit');
+  const patientSelect = document.getElementById('patient-select');
 
+
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+        // User is signed in, populate the select
+        populatePatientSelect(user);
+    } else {
+        // User is signed out, show login message
+        document.getElementById('patient-select').innerHTML = '<option value="">Please log in</option>';
+        console.log("User is logged out");
+    }
+});
+
+patientSelect.addEventListener('change', () => {
+    const selectedPatientId = patientSelect.value;
+    if (selectedPatientId) {
+        displayPatientSummary(selectedPatientId);
+    }
+});
+ 
   
   // Disable all fields on Save
   submitBtn.addEventListener('click', function () {
     savePatientInfo();
   });
+
+
 
 
 });
