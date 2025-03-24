@@ -2,6 +2,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-analytics.js";
 import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -10,6 +11,7 @@ import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/fir
 const firebaseConfig = {
   apiKey: "AIzaSyAWg9QMvmGuXO8muczaT8C7mtKbAQdxflQ",
   authDomain: "website-7c0bb.firebaseapp.com",
+  databaseURL: "https://website-7c0bb-default-rtdb.asia-southeast1.firebasedatabase.app",
   projectId: "website-7c0bb",
   storageBucket: "website-7c0bb.firebasestorage.app",
   messagingSenderId: "161489771293",

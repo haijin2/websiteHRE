@@ -11,10 +11,10 @@
   <script src="transition.js"></script>
   <script src="validation.js"></script>
   <script src="calendar.js"></script>
-  <script src="patient-save.js"></script>
+  <script type="module" src="patient-save.js"></script>
   <script src="physical-save.js"></script>
   <script src="toggle.js"></script>
-  <script src="submit.js"></script>
+  <script type="module" src="submit.js"></script>
 
 </head>
 
@@ -143,22 +143,22 @@
                 <div id="neuroCollapse" class="accordion-collapse collapse show">
                   <div class="accordion-body" id="neuro-assessment">
                     <label for="mental_status">Mental Status:</label>
-                    <input type="text" class="form-control mb-2" id="mental_status" name="mental_status" placeholder="e.g., Alert, Oriented" required>
+                    <input type="text" class="form-control mb-2" id="mental_status" placeholder="e.g., Alert, Oriented" required>
                   
                     <label for="pupils">Pupils:</label>
-                    <input type="text" class="form-control mb-2" id="pupils" name="pupils" placeholder="e.g., Equal, Reactive" required>
+                    <input type="text" class="form-control mb-2" id="pupils" placeholder="e.g., Equal, Reactive" required>
                   
                     <label for="orientation">Orientation:</label>
-                    <input type="text" class="form-control mb-2" id="orientation" name="orientation" placeholder="e.g., Time, Place, Person" required>
+                    <input type="text" class="form-control mb-2" id="orientation" placeholder="e.g., Time, Place, Person" required>
                   
                     <label for="pupil_size_right">Pupil Size - Right:</label>
-                    <input type="number" class="form-control mb-2" id="pupil_size_right" name="pupil_size_right" placeholder="mm" required>
+                    <input type="number" class="form-control mb-2" id="pupil_size_right" placeholder="mm" required>
                   
                     <label for="pupil_size_left">Pupil Size - Left:</label>
-                    <input type="number" class="form-control mb-2" id="pupil_size_left" name="pupil_size_left" placeholder="mm" required>
+                    <input type="number" class="form-control mb-2" id="pupil_size_left" placeholder="mm" required>
                   
                     <label for="affect">Affect:</label>
-                    <input type="text" class="form-control mb-2" id="affect" name="affect" placeholder="e.g., Calm, Anxious" required>
+                    <input type="text" class="form-control mb-2" id="affect" placeholder="e.g., Calm, Anxious" required>
                   </div>                  
                 </div>
               </div>
@@ -171,13 +171,13 @@
                 <div id="cardioCollapse" class="accordion-collapse collapse show">
                   <div class="accordion-body">
                     <label for="central_pulses">Central Pulses:</label>
-                    <input type="text" class="form-control mb-2" id="central_pulses" name="central_pulses" placeholder="e.g., Strong, Weak, Regular" required>
+                    <input type="text" class="form-control mb-2" id="central_pulses" placeholder="e.g., Strong, Weak, Regular" required>
                     
                     <label for="heart_sounds">Heart Sounds:</label>
-                    <input type="text" class="form-control mb-2" id="heart_sounds" name="heart_sounds" placeholder="e.g., Normal S1 S2, Murmur" required>
+                    <input type="text" class="form-control mb-2" id="heart_sounds" placeholder="e.g., Normal S1 S2, Murmur" required>
                     
                     <label for="peripheral_pulses">Peripheral Pulses:</label>
-                    <input type="text" class="form-control mb-2" id="peripheral_pulses" name="peripheral_pulses" placeholder="e.g., Palpable, Thready" required>
+                    <input type="text" class="form-control mb-2" id="peripheral_pulses" placeholder="e.g., Palpable, Thready" required>
                     
                   </div>
                 </div>
@@ -191,19 +191,19 @@
                 <div id="abdominalCollapse" class="accordion-collapse collapse show">
                   <div class="accordion-body">
                     <label for="abdomen_is">Abdomen is:</label>
-                    <input type="text" class="form-control mb-2" id="abdomen_is" name="abdomen_is" placeholder="e.g., Soft, Distended" required>
+                    <input type="text" class="form-control mb-2" id="abdomen_is" placeholder="e.g., Soft, Distended" required>
                     
                     <label for="bowel_sounds">Bowel Sounds:</label>
-                    <input type="text" class="form-control mb-2" id="bowel_sounds" name="bowel_sounds" placeholder="e.g., Normal, Hyperactive" required>
+                    <input type="text" class="form-control mb-2" id="bowel_sounds" placeholder="e.g., Normal, Hyperactive" required>
                     
                     <label for="quadrants">Quadrants:</label>
-                    <input type="text" class="form-control mb-2" id="quadrants" name="quadrants" placeholder="e.g., RUQ, LUQ" required>
+                    <input type="text" class="form-control mb-2" id="quadrants" placeholder="e.g., RUQ, LUQ" required>
                     
                     <label for="last_bm_date">Last BM/Date:</label>
-                    <input type="date" class="form-control mb-2" id="last_bm_date" name="last_bm_date">
+                    <input type="date" class="form-control mb-2" id="last_bm_date">
                     
                     <label for="stool_consistency">Stool Consistency:</label>
-                    <input type="text" class="form-control mb-2" id="stool_consistency" name="stool_consistency" placeholder="e.g., Soft, Hard" required>
+                    <input type="text" class="form-control mb-2" id="stool_consistency" placeholder="e.g., Soft, Hard" required>
                     
                   </div>
                 </div>
@@ -217,13 +217,13 @@
                 <div id="musculoCollapse" class="accordion-collapse collapse show">
                   <div class="accordion-body">
                     <label for="movement">Movement:</label>
-                    <input type="text" class="form-control mb-2" id="movement" name="movement" placeholder="e.g., Full, Limited" required>
+                    <input type="text" class="form-control mb-2" id="movement" placeholder="e.g., Full, Limited" required>
                     
                     <label for="contracture">Contracture:</label>
-                    <input type="text" class="form-control mb-2" id="contracture" name="contracture" placeholder="e.g., None, Present" required>
+                    <input type="text" class="form-control mb-2" id="contracture" placeholder="e.g., None, Present" required>
                     
                     <label for="musculo_location">Location:</label>
-                    <input type="text" class="form-control mb-2" id="musculo_location" name="musculo_location" placeholder="e.g., Left Arm, Right Leg" required>
+                    <input type="text" class="form-control mb-2" id="musculo_location" placeholder="e.g., Left Arm, Right Leg" required>
                     
                   </div>
                 </div>
@@ -237,13 +237,13 @@
                 <div id="glasgowCollapse" class="accordion-collapse collapse show">
                   <div class="accordion-body">
                     <label for="eye_response">Eye Opening Response:</label>
-                    <input type="text" class="form-control mb-2" id="eye_response" name="eye_response" placeholder="e.g., Spontaneous, To sound" required>
+                    <input type="text" class="form-control mb-2" id="eye_response" placeholder="e.g., Spontaneous, To sound" required>
                     
                     <label for="verbal_response">Verbal Response:</label>
-                    <input type="text" class="form-control mb-2" id="verbal_response" name="verbal_response" placeholder="e.g., Oriented, Confused" required>
+                    <input type="text" class="form-control mb-2" id="verbal_response" placeholder="e.g., Oriented, Confused" required>
                     
                     <label for="motor_response">Motor Response:</label>
-                    <input type="text" class="form-control mb-2" id="motor_response" name="motor_response" placeholder="e.g., Obeys commands" required>
+                    <input type="text" class="form-control mb-2" id="motor_response" placeholder="e.g., Obeys commands" required>
                     
                   </div>
                 </div>
@@ -257,16 +257,16 @@
                 <div id="respCollapse" class="accordion-collapse collapse show">
                   <div class="accordion-body">
                     <label for="effort">Effort:</label>
-                    <input type="text" class="form-control mb-2" id="effort" name="effort" placeholder="e.g., Normal, Labored" required>
+                    <input type="text" class="form-control mb-2" id="effort" placeholder="e.g., Normal, Labored" required>
                     
                     <label for="sounds_left">Sounds - Left:</label>
-                    <input type="text" class="form-control mb-2" id="sounds_left" name="sounds_left" placeholder="e.g., Clear, Crackles" required>
+                    <input type="text" class="form-control mb-2" id="sounds_left" placeholder="e.g., Clear, Crackles" required>
                     
                     <label for="sounds_right">Sounds - Right:</label>
-                    <input type="text" class="form-control mb-2" id="sounds_right" name="sounds_right" placeholder="e.g., Clear, Wheezing" required>
+                    <input type="text" class="form-control mb-2" id="sounds_right" placeholder="e.g., Clear, Wheezing" required>
                     
                     <label for="cough">Cough:</label>
-                    <input type="text" class="form-control mb-2" id="cough" name="cough" placeholder="e.g., Productive, Non-productive" required>
+                    <input type="text" class="form-control mb-2" id="cough" placeholder="e.g., Productive, Non-productive" required>
                     
                   </div>
                 </div>
@@ -287,13 +287,13 @@
                 <div id="skinCollapse" class="accordion-collapse collapse show">
                   <div class="accordion-body">
                     <label for="skin_color">Color:</label>
-                    <input type="text" class="form-control mb-2" id="skin_color" name="skin_color" placeholder="e.g., Pink, Pale, Cyanotic" required>
+                    <input type="text" class="form-control mb-2" id="skin_color" placeholder="e.g., Pink, Pale, Cyanotic" required>
                     
                     <label for="skin_temp">Temperature (°C):</label>
-                    <input type="number" class="form-control mb-2" id="skin_temp" name="skin_temp" placeholder="e.g., 36.5" required>
+                    <input type="number" class="form-control mb-2" id="skin_temp" placeholder="e.g., 36.5" required>
                     
                     <label for="wound_type">Type of Wound:</label>
-                    <input type="text" class="form-control mb-2" id="wound_type" name="wound_type" placeholder="e.g., Surgical, Pressure Ulcer" required>
+                    <input type="text" class="form-control mb-2" id="wound_type" placeholder="e.g., Surgical, Pressure Ulcer" required>
                     
                   </div>
                 </div>
@@ -307,13 +307,13 @@
                 <div id="w1Collapse" class="accordion-collapse collapse show">
                   <div class="accordion-body">
                     <label for="wound1_location">Location:</label>
-                    <input type="text" class="form-control mb-2" id="wound1_location" name="wound1_location" placeholder="e.g., Sacrum" required>
+                    <input type="text" class="form-control mb-2" id="wound1_location" placeholder="e.g., Sacrum" required>
                     
                     <label for="wound1_stage">Stage:</label>
-                    <input type="text" class="form-control mb-2" id="wound1_stage" name="wound1_stage" placeholder="e.g., Stage 1, Stage 2" required>
+                    <input type="text" class="form-control mb-2" id="wound1_stage" placeholder="e.g., Stage 1, Stage 2" required>
                     
                     <label for="wound1_picture">Picture:</label>
-                    <input type="file" class="form-control mb-2" id="wound1_picture" name="wound1_picture">
+                    <input type="file" class="form-control mb-2" id="wound1_picture">
                     
                   </div>
                 </div>
@@ -327,13 +327,13 @@
                 <div id="w2Collapse" class="accordion-collapse collapse show">
                   <div class="accordion-body">
                     <label for="wound2_location">Location:</label>
-                    <input type="text" class="form-control mb-2" id="wound2_location" name="wound2_location" placeholder="e.g., Heel" required>
+                    <input type="text" class="form-control mb-2" id="wound2_location" placeholder="e.g., Heel" required>
                     
                     <label for="wound2_stage">Stage:</label>
-                    <input type="text" class="form-control mb-2" id="wound2_stage" name="wound2_stage" placeholder="e.g., Stage 2, Stage 3" required>
+                    <input type="text" class="form-control mb-2" id="wound2_stage" placeholder="e.g., Stage 2, Stage 3" required>
                     
                     <label for="wound2_picture">Picture:</label>
-                    <input type="file" class="form-control mb-2" id="wound2_picture" name="wound2_picture">
+                    <input type="file" class="form-control mb-2" id="wound2_picture">
                     
                   </div>
                 </div>
@@ -347,13 +347,13 @@
                 <div id="w3Collapse" class="accordion-collapse collapse show">
                   <div class="accordion-body">
                     <label for="wound3_location">Location:</label>
-                    <input type="text" class="form-control mb-2" id="wound3_location" name="wound3_location" placeholder="e.g., Elbow" required>
+                    <input type="text" class="form-control mb-2" id="wound3_location" placeholder="e.g., Elbow" required>
                     
                     <label for="wound3_stage">Stage:</label>
-                    <input type="text" class="form-control mb-2" id="wound3_stage" name="wound3_stage" placeholder="e.g., Stage 4" required>
+                    <input type="text" class="form-control mb-2" id="wound3_stage" placeholder="e.g., Stage 4" required>
                     
                     <label for="wound3_picture">Picture:</label>
-                    <input type="file" class="form-control mb-2" id="wound3_picture" name="wound3_picture">
+                    <input type="file" class="form-control mb-2" id="wound3_picture" >
                     
                   </div>
                 </div>
@@ -367,25 +367,25 @@
                 <div id="NeurovascularCollapse" class="accordion-collapse collapse show">
                   <div class="accordion-body">
                     <label for="extremity">Extremity:</label>
-                    <input type="text" class="form-control mb-2" id="extremity" name="extremity" placeholder="e.g., Left Arm" required>
+                    <input type="text" class="form-control mb-2" id="extremity" placeholder="e.g., Left Arm" required>
                     
                     <label for="pain">Pain (0-10):</label>
-                    <input type="number" class="form-control mb-2" id="pain" name="pain" min="0" max="10" step="1" placeholder="0 = No pain" required>
+                    <input type="number" class="form-control mb-2" id="pain" min="0" max="10" step="1" placeholder="0 = No pain" required>
                     
                     <label for="pulses">Pulses:</label>
-                    <input type="text" class="form-control mb-2" id="pulses" name="pulses" placeholder="e.g., Strong, Weak" required>
+                    <input type="text" class="form-control mb-2" id="pulses" placeholder="e.g., Strong, Weak" required>
                     
                     <label for="neuro_color">Color:</label>
-                    <input type="text" class="form-control mb-2" id="neuro_color" name="neuro_color" placeholder="e.g., Pink, Pale" required>
+                    <input type="text" class="form-control mb-2" id="neuro_color" placeholder="e.g., Pink, Pale" required>
                     
                     <label for="neuro_movement">Movement:</label>
-                    <input type="text" class="form-control mb-2" id="neuro_movement" name="neuro_movement" placeholder="e.g., Full Range" required>
+                    <input type="text" class="form-control mb-2" id="neuro_movement" placeholder="e.g., Full Range" required>
                     
                     <label for="sensation">Sensation:</label>
-                    <input type="text" class="form-control mb-2" id="sensation" name="sensation" placeholder="e.g., Intact, Numbness" required>
+                    <input type="text" class="form-control mb-2" id="sensation" placeholder="e.g., Intact, Numbness" required>
                     
                     <label for="neuro_temp">Temperature (°C):</label>
-                    <input type="number" class="form-control mb-2" id="neuro_temp" name="neuro_temp" placeholder="e.g., 36.5" required>
+                    <input type="number" class="form-control mb-2" id="neuro_temp" placeholder="e.g., 36.5" required>
                     
                   </div>
                 </div>
@@ -399,19 +399,19 @@
                 <div id="VitalCollapse" class="accordion-collapse collapse show">
                   <div class="accordion-body">
                     <label for="blood-pressure">Blood Pressure:</label>
-                    <input type="number" class="form-control mb-2" id="blood-pressure" name="blood-pressure" placeholder="e.g., 120/80" required>
+                    <input type="number" class="form-control mb-2" id="blood-pressure" placeholder="e.g., 120/80" required>
                     
                     <label for="heart-rate">Heart Rate:</label>
-                    <input type="number" class="form-control mb-2" id="heart-rate" name="heart-rate" placeholder="e.g., 72 bpm" required>
+                    <input type="number" class="form-control mb-2" id="heart-rate" placeholder="e.g., 72 bpm" required>
                     
                     <label for="pulse-rate">Pulse Rate:</label>
-                    <input type="number" class="form-control mb-2" id="pulse-rate" name="pulse-rate" placeholder="e.g., 72 bpm" required>
+                    <input type="number" class="form-control mb-2" id="pulse-rate" placeholder="e.g., 72 bpm" required>
                     
                     <label for="temperature">Temperature (°C):</label>
-                    <input type="number" class="form-control mb-2" id="temperature" name="temperature" placeholder="e.g., 36.7" required>
+                    <input type="number" class="form-control mb-2" id="temperature" placeholder="e.g., 36.7" required>
                     
                     <label for="oxy-sat">Oxygen Saturation:</label>
-                    <input type="number" class="form-control mb-2" id="oxy-sat" name="oxy-sat" placeholder="e.g., 98%" required>
+                    <input type="number" class="form-control mb-2" id="oxy-sat" placeholder="e.g., 98%" required>
                     
                   </div>
                 </div>
@@ -453,7 +453,7 @@
           </div>
     
           <div class="d-grid">
-            <button type="submit" class="btn btn-apple" id="submit">Submit</button>
+            <button type="button" class="btn btn-apple" id="submit">Submit</button>
           </div>
         </form>
       </div>
