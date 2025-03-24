@@ -270,9 +270,13 @@ function displayPatientSummary(patientId) {
 
           document.getElementById('summary-skin-color').value = patientData.skinColor || '';
           document.getElementById('summary-skin-temp').value = patientData.skinTemp || '';
-          document.getElementById('summary-wound1').value = patientData.wound1Location || '';
-          document.getElementById('summary-wound2').value = patientData.wound2Location || '';
-          document.getElementById('summary-wound3').value = patientData.wound3Location || '';
+          document.getElementById('summary-type-of-wound').value = patientData.woundType || '';
+          document.getElementById('summary-location-wound1').value = patientData.wound1Location || '';
+          document.getElementById('summary-stage-wound1').value = patientData.wound1Stage || '';
+          document.getElementById('summary-location-wound2').value = patientData.wound2Location || '';
+          document.getElementById('summary-stage-wound2').value = patientData.wound2Stage || '';
+          document.getElementById('summary-location-wound3').value = patientData.wound3Location || '';
+          document.getElementById('summary-stage-wound3').value = patientData.wound3Stage || '';
 
           document.getElementById('summary-extremity').value = patientData.extremity || '';
           document.getElementById('summary-pain').value = patientData.pain || '';
