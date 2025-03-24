@@ -1,0 +1,4 @@
+- logout
+- ui tweaks
+- image
+- logic / validation
