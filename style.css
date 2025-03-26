@@ -74,11 +74,12 @@
   .section-content {
     display: none;
     opacity: 0;
-    transition: opacity 0.4s ease;
+  
   }
   
   .section-content.show {
     display: block;
+    opacity: 1;
   }
   
   .section-content.fade-in {
