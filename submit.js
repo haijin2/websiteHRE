@@ -1,6 +1,6 @@
 import { auth } from './firebase-config.js'; // Import database
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
-import { savePatientInfo, populatePatientSelect, displayPatientSummary } from './functions.js';
+import { savePatientInfo, populatePatientSelect, displayPatientSummary, WelcomeUser, logoutButton, showWelcome } from './functions.js';
 
 
 
@@ -8,16 +8,17 @@ document.addEventListener('DOMContentLoaded', () => {
   const submitBtn = document.getElementById('submit');
   const patientSelect = document.getElementById('patient-select');
 
-
+  showWelcome();
   onAuthStateChanged(auth, (user) => {
     if (user) {
-        // User is signed in, populate the select
+        WelcomeUser(user);
         populatePatientSelect(user);
     } else {
         // User is signed out, show login message
         document.getElementById('patient-select').innerHTML = '<option value="">Please log in</option>';
         console.log("User is logged out");
     }
+
 });
 
 patientSelect.addEventListener('change', () => {
@@ -27,11 +28,21 @@ patientSelect.addEventListener('change', () => {
     }
 });
  
+
   
-  // Disable all fields on Save
-  submitBtn.addEventListener('click', function () {
+  submitBtn.addEventListener('submit', function () {
     savePatientInfo();
   });
+
+  
+
+  const logoutbtn = document.getElementById('logoutbtn');  // Replace 'exit-button'
+  if (logoutbtn) {
+      logoutbtn.addEventListener('click', logoutButton);
+  } else {
+      console.error("Exit button element not found.  Ensure the button has the ID 'exit-button'.");
+  }
+  
 
 
 

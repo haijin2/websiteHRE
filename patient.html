@@ -52,7 +52,7 @@
   
           <!-- ✅ Logout Button -->
           <li class="nav-item ms-lg-3 mt-3 mt-lg-0">
-            <button class="btn btn-outline-dark logout-btn">Logout</button>
+            <button class="btn btn-outline-dark logout-btn" id="logoutbtn">Logout</button>
           </li>
         </ul>
       </div>
@@ -63,7 +63,7 @@
 
     <!-- title transion here-->
     <div id="welcome" class="welcome-message">
-      <div class="welcome-user">Hello, freakyassn_69God!</div>
+      <div class="welcome-user" id="welcome-user"></div>
       <div class="welcome-right">
         <div class="welcome-date" id="date"></div>
         <div class="welcome-time" id="time"></div>
@@ -83,7 +83,7 @@
               <div class="row g-4">
             <div class="col-md-4">
               <label class="form-label">Given Name</label>
-              <input type="text" class="form-control" placeholder="Enter given name" id="patient-given-name">
+              <input type="text" class="form-control" placeholder="Enter given name" id="patient-given-name" required>
             </div>
             <div class="col-md-4">
               <label class="form-label">Middle Name</label>
@@ -880,7 +880,7 @@
           </div>
         </div>
           <div class="d-grid col-12 mt-4">
-            <button type="button" class="btn btn-apple" id="submit">Submit</button>
+            <button type="submit" class="btn btn-apple" id="submit">Submit</button>
           </div>
         </form>
       </div>

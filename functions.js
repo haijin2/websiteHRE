@@ -314,3 +314,81 @@ export function displayPatientSummary(patientId) {
       alert("Error loading patient data.");
   });
 }
+
+export function WelcomeUser(user) {
+  const welcomeUserElement = document.getElementById('welcome-user');
+  if (!welcomeUserElement) {
+      console.error("Element with id 'welcome-user' not found in the DOM.");
+      return;
+  }
+
+  if (!user) {
+      console.error("No user is currently logged in.");
+      welcomeUserElement.textContent = "Hello, User!";
+      return;
+  }
+  const userRef = ref(database, `users/${user.uid}`);
+
+  onValue(userRef, (snapshot) => {
+      const userData = snapshot.val();
+      if (userData && userData.username) {
+          welcomeUserElement.textContent = `Hello, ${userData.username}`;
+      } else {
+          console.warn("User data or username not found in the database for the current user.");
+          welcomeUserElement.textContent = "Hello, User!"; // Or some default
+      }
+  }, {
+      onlyOnce: true
+  });
+}
+
+export function logoutButton() {
+  auth.signOut()
+      .then(() => {
+          // Sign-out successful.
+          console.log("User signed out.");
+          window.location.href = "index.html"; // Redirect to login page
+      })
+      .catch((error) => {
+          console.error("Error signing out:", error);
+      });
+}
+
+export function showWelcome() {
+  const welcome = document.getElementById('welcome');
+  const timeElement = document.getElementById('time');
+  const dateElement = document.getElementById('date');
+
+  function updateTime() {
+    const now = new Date();
+
+    // Format Time (12-hour format with AM/PM)
+    let hours = now.getHours();
+    const minutes = now.getMinutes().toString().padStart(2, '0');
+    const seconds = now.getSeconds().toString().padStart(2, '0');
+    const ampm = hours >= 12 ? 'PM' : 'AM';
+    hours = hours % 12 || 12;
+    timeElement.textContent = `${hours}:${minutes}:${seconds} ${ampm}`;
+  }
+
+  // Format Date (e.g., March 28, 2025)
+  const now = new Date();
+  const options = { year: 'numeric', month: 'long', day: 'numeric' };
+  const formattedDate = now.toLocaleDateString('en-US', options);
+  dateElement.textContent = formattedDate;
+
+  // Show the welcome message
+  welcome.classList.add('show');
+  welcome.style.display = 'flex';
+
+  // Update the time immediately and every second
+  updateTime();
+  setInterval(updateTime, 1000);
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  setTimeout(() => {
+    showWelcome();
+    
+  }); // Optional slight delay to simulate login
+});
