@@ -2,10 +2,10 @@ import { auth } from './firebase-config.js'; // Import database
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
 import { savePatientInfo, populatePatientSelect, displayPatientSummary, WelcomeUser, logoutButton, showWelcome } from './functions.js';
 
-
+const appointmentForm = document.getElementById('appointment-form');
 
 document.addEventListener('DOMContentLoaded', () => {
-  const submitBtn = document.getElementById('submit');
+
   const patientSelect = document.getElementById('patient-select');
 
   showWelcome();
@@ -27,24 +27,21 @@ patientSelect.addEventListener('change', () => {
         displayPatientSummary(selectedPatientId);
     }
 });
- 
 
-  
-  submitBtn.addEventListener('submit', function () {
-    savePatientInfo();
+appointmentForm.addEventListener('submit', function (e) {
+    e.preventDefault(); // Prevent default form submission (reload)
+
+    if (appointmentForm.checkValidity()) {
+      savePatientInfo();
+    } else {
+      appointmentForm.reportValidity(); 
+    }
   });
 
-  
-
-  const logoutbtn = document.getElementById('logoutbtn');  // Replace 'exit-button'
+  // Logout button listener
   if (logoutbtn) {
-      logoutbtn.addEventListener('click', logoutButton);
+    logoutbtn.addEventListener('click', logoutButton);
   } else {
-      console.error("Exit button element not found.  Ensure the button has the ID 'exit-button'.");
+    console.error("Exit button element not found. Ensure the button has the ID 'logoutbtn'.");
   }
-  
-
-
-
-
 });
