@@ -1,4 +1,6 @@
-- logout
-- ui tweaks
-- image
-- logic / validation
+- logout /
+- ui tweaks / 
+- image / 
+- logic / validation /
+- no input
+- hosting if ever
