@@ -284,4 +284,9 @@
     color: #555;
     font-weight: 500;
   }
-  
+
+  .highlight {
+    background-color: #fff3b0 !important; 
+    border: 2px solid #ffcc80 !important; 
+    transition: background-color 0.3s ease-in-out, border 0.3s ease-in-out;
+}

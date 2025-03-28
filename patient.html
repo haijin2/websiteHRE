@@ -101,7 +101,7 @@
     
             <div class="col-md-4">
               <label class="form-label">Gender</label>
-              <select class="form-select" id="patient-gender">
+              <select class="form-select" id="patient-gender" required>
                 <option selected disabled>Choose...</option>
                 <option>Male</option>
                 <option>Female</option>
@@ -111,27 +111,27 @@
     
             <div class="col-md-4">
               <label class="form-label">Contact Number</label>
-              <input type="number" class="form-control" placeholder="Enter contact number" id="patient-contact">
+              <input type="number" class="form-control" placeholder="Enter contact number" id="patient-contact" required>
             </div>
     
             <div class="col-md-4">
               <label class="form-label">Height (cm)</label>
-              <input type="number" class="form-control" id="patient-height">
+              <input type="number" class="form-control" id="patient-height" required  placeholder="165 cm">
             </div>
     
             <div class="col-md-4">
               <label class="form-label">Weight (kg)</label>
-              <input type="number" class="form-control" id="patient-weight">
+              <input type="number" class="form-control" id="patient-weight" required  placeholder="53 kg">
             </div>
     
             <div class="col-md-6">
               <label class="form-label">Occupation</label>
-              <input type="text" class="form-control" id="patient-occupation">
+              <input type="text" class="form-control" id="patient-occupation" required placeholder="Student">
             </div>
     
             <div class="col-md-6">
               <label class="form-label">Lifestyle (Alcohol, Cigarette)</label>
-              <input type="text" class="form-control" id="patient-lifestyle">
+              <input type="text" class="form-control" id="patient-lifestyle" required placeholder="Alcohol">
             </div>
     
             <div class="col-12">
@@ -165,25 +165,25 @@
         <h5 class="mt-4 mb-3">Neurovascular Extremities</h5>
         <div class="ms-3">
           <label class="form-label">Extremity:</label>
-          <input type="text" class="form-control mb-3" id="extremity" placeholder="e.g., Left Arm">
+          <input type="text" class="form-control mb-3" id="extremity" placeholder="e.g., Left Arm" required>
 
           <label class="form-label">Pain (0-10):</label>
-          <input type="number" class="form-control mb-3" id="pain" min="0" max="10" placeholder="0 = No pain">
+          <input type="number" class="form-control mb-3" id="pain" min="0" max="10" placeholder="0 = No pain" required>
 
           <label class="form-label">Pulses:</label>
-          <input type="text" class="form-control mb-3" id="pulses" placeholder="e.g., Strong, Weak">
+          <input type="text" class="form-control mb-3" id="pulses" placeholder="e.g., Strong, Weak" required>
 
           <label class="form-label">Color:</label>
-          <input type="text" class="form-control mb-3" id="neuro_color" placeholder="e.g., Pink, Pale">
+          <input type="text" class="form-control mb-3" id="neuro_color" placeholder="e.g., Pink, Pale" required>
 
           <label class="form-label">Movement:</label>
-          <input type="text" class="form-control mb-3" id="neuro_movement" placeholder="e.g., Full Range">
+          <input type="text" class="form-control mb-3" id="neuro_movement" placeholder="e.g., Full Range" required>
 
           <label class="form-label">Sensation:</label>
-          <input type="text" class="form-control mb-3" id="sensation" placeholder="e.g., Intact, Numbness">
+          <input type="text" class="form-control mb-3" id="sensation" placeholder="e.g., Intact, Numbness" required>
 
           <label class="form-label">Temperature (°C):</label>
-          <input type="number" class="form-control mb-3" id="neuro_temp" placeholder="e.g., 36.5">
+          <input type="number" class="form-control mb-3" id="neuro_temp" placeholder="e.g., 36.5" required>
         </div>
           </div>
         </div>
@@ -193,25 +193,25 @@
             <h5 class="mt-4 mb-3">Glasgow Coma Scale</h5>
             <div class="ms-3">
             <label class="form-label">Eye Opening Response:</label>
-            <input type="text" class="form-control mb-3" id="eye_response" placeholder="e.g., Spontaneous, To sound">
+            <input type="text" class="form-control mb-3" id="eye_response" placeholder="e.g., Spontaneous, To sound" required>
 
             <label class="form-label">Verbal Response:</label>
-            <input type="text" class="form-control mb-3" id="verbal_response" placeholder="e.g., Oriented, Confused">
+            <input type="text" class="form-control mb-3" id="verbal_response" placeholder="e.g., Oriented, Confused" required>
 
             <label class="form-label">Motor Response:</label>
-            <input type="text" class="form-control mb-3" id="motor_response" placeholder="e.g., Obeys commands">
+            <input type="text" class="form-control mb-3" id="motor_response" placeholder="e.g., Obeys commands" required>
 
             <label class="form-label">IV Site #1 Location:</label>
-            <input type="text" class="form-control mb-3" id="iv_site_1" placeholder="e.g., Arm">
+            <input type="text" class="form-control mb-3" id="iv_site_1" placeholder="e.g., Arm" required>
 
             <label class="form-label">IV Site #1 Appearance:</label>
-            <input type="text" class="form-control mb-3" id="iv_appearance_1" placeholder="e.g., Normal">
+            <input type="text" class="form-control mb-3" id="iv_appearance_1" placeholder="e.g., Normal" required>
 
             <label class="form-label">IV Site #2 Location:</label>
-            <input type="text" class="form-control mb-3" id="iv_site_2" placeholder="e.g., Hand, Neck">
+            <input type="text" class="form-control mb-3" id="iv_site_2" placeholder="e.g., Hand, Neck" required>
 
             <label class="form-label">IV Site #2 Appearance:</label>
-            <input type="text" class="form-control mb-3" id="iv_appearance_2" placeholder="e.g., Normal">
+            <input type="text" class="form-control mb-3" id="iv_appearance_2" placeholder="e.g., Normal" required>
           </div>
           </div>
           </div>
@@ -222,19 +222,19 @@
               <h5 class="mt-4 mb-3">Abdominal / GI / GU</h5>
               <div class="ms-3">
                 <label class="form-label">Abdomen is:</label>
-                <input type="text" class="form-control mb-3" id="abdomen_is" placeholder="e.g., Soft, Distended">
+                <input type="text" class="form-control mb-3" id="abdomen_is" placeholder="e.g., Soft, Distended" required>
 
                 <label class="form-label">Bowel Sounds:</label>
-                <input type="text" class="form-control mb-3" id="bowel_sounds" placeholder="e.g., Normal, Hyperactive">
+                <input type="text" class="form-control mb-3" id="bowel_sounds" placeholder="e.g., Normal, Hyperactive" required>
 
                 <label class="form-label">Quadrants:</label>
-                <input type="text" class="form-control mb-3" id="quadrants" placeholder="e.g., RUQ, LUQ">
+                <input type="text" class="form-control mb-3" id="quadrants" placeholder="e.g., RUQ, LUQ" required>
 
                 <label class="form-label">Last BM/Date:</label>
-                <input type="date" class="form-control mb-3" id="last_bm_date">
+                <input type="date" class="form-control mb-3" id="last_bm_date" required>
 
                 <label class="form-label">Stool Consistency:</label>
-                <input type="text" class="form-control mb-3" id="stool_consistency" placeholder="e.g., Soft, Hard">
+                <input type="text" class="form-control mb-3" id="stool_consistency" placeholder="e.g., Soft, Hard" required>
               </div>
             </div>
           </div>
@@ -244,22 +244,22 @@
             <h5 class="mt-4 mb-3">Neuro</h5>
             <div class="ms-3">
               <label class="form-label">Mental Status:</label>
-              <input type="text" class="form-control mb-3" id="mental_status" placeholder="e.g., Alert, Oriented">
+              <input type="text" class="form-control mb-3" id="mental_status" placeholder="e.g., Alert, Oriented" required>
 
               <label class="form-label">Pupils:</label>
-              <input type="text" class="form-control mb-3" id="pupils" placeholder="e.g., Equal, Reactive">
+              <input type="text" class="form-control mb-3" id="pupils" placeholder="e.g., Equal, Reactive" required>
 
               <label class="form-label">Orientation:</label>
-              <input type="text" class="form-control mb-3" id="orientation" placeholder="e.g., Alert, Oriented">
+              <input type="text" class="form-control mb-3" id="orientation" placeholder="e.g., Alert, Oriented" required>
 
               <label class="form-label">Pupil Size - Right (mm):</label>
-              <input type="number" class="form-control mb-3" id="pupil_size_right" placeholder="mm">
+              <input type="number" class="form-control mb-3" id="pupil_size_right" placeholder="mm" required>
 
               <label class="form-label">Pupil Size - Left (mm):</label>
-              <input type="number" class="form-control mb-3" id="pupil_size_left" placeholder="mm">
+              <input type="number" class="form-control mb-3" id="pupil_size_left" placeholder="mm" required>
 
               <label class="form-label">Affect:</label>
-              <input type="text" class="form-control mb-3" id="affect" placeholder="e.g., Calm, Anxious">
+              <input type="text" class="form-control mb-3" id="affect" placeholder="e.g., Calm, Anxious" required>
             </div>
           </div>
         </div>
@@ -269,13 +269,13 @@
             <h5 class="mt-4 mb-3">Cardiovascular</h5>
             <div class="ms-3">
               <label class="form-label">Central Pulses:</label>
-              <input type="text" class="form-control mb-3" id="central_pulses" placeholder="e.g., Strong, Weak, Regular">
+              <input type="text" class="form-control mb-3" id="central_pulses" placeholder="e.g., Strong, Weak, Regular" required>
 
               <label class="form-label">Heart Sounds:</label>
-              <input type="text" class="form-control mb-3" id="heart_sounds" placeholder="e.g., Normal S1 S2, Murmur">
+              <input type="text" class="form-control mb-3" id="heart_sounds" placeholder="e.g., Normal S1 S2, Murmur" required>
 
               <label class="form-label">Peripheral Pulses:</label>
-              <input type="text" class="form-control mb-3" id="peripheral_pulses" placeholder="e.g., Palpable, Thready">
+              <input type="text" class="form-control mb-3" id="peripheral_pulses" placeholder="e.g., Palpable, Thready" required>
             </div>
           </div>
         </div>
@@ -285,13 +285,13 @@
                 <h5 class="mt-4 mb-3">Musculoskeletal</h5>
                 <div class="ms-3">
                   <label class="form-label">Movement:</label>
-                  <input type="text" class="form-control mb-3" id="movement" placeholder="e.g., Full, Limited">
+                  <input type="text" class="form-control mb-3" id="movement" placeholder="e.g., Full, Limited" required>
 
                   <label class="form-label">Contracture:</label>
-                  <input type="text" class="form-control mb-3" id="contracture" placeholder="e.g., None, Present">
+                  <input type="text" class="form-control mb-3" id="contracture" placeholder="e.g., None, Present" required>
 
                   <label class="form-label">Location:</label>
-                  <input type="text" class="form-control mb-3" id="musculo_location" placeholder="e.g., Left Arm, Right Leg">
+                  <input type="text" class="form-control mb-3" id="musculo_location" placeholder="e.g., Left Arm, Right Leg" required>
                 </div>
               </div>
             </div>
@@ -302,13 +302,13 @@
             <h5 class="mt-4 mb-3">Integumentary</h5>
             <div class="ms-3">
               <label class="form-label">Skin Color:</label>
-              <input type="text" class="form-control mb-3" id="skin_color" placeholder="e.g., Pink, Pale, Cyanotic">
+              <input type="text" class="form-control mb-3" id="skin_color" placeholder="e.g., Pink, Pale, Cyanotic" required>
 
               <label class="form-label">Temperature (°C):</label>
-              <input type="number" class="form-control mb-3" id="skin_temp" placeholder="e.g., 36.5">
+              <input type="number" class="form-control mb-3" id="skin_temp" placeholder="e.g., 36.5" required>
 
               <label class="form-label">Type of Wound:</label>
-              <input type="text" class="form-control mb-3" id="wound_type" placeholder="e.g., Surgical, Pressure Ulcer">
+              <input type="text" class="form-control mb-3" id="wound_type" placeholder="e.g., Surgical, Pressure Ulcer" required>
             </div>
           </div>
             </div>
@@ -320,10 +320,10 @@
             <h5 class="mt-4 mb-3">Wounds / Pressure Area #1</h5>
             <div class="ms-3">
               <label class="form-label">Wound 1 Location:</label>
-              <input type="text" class="form-control mb-3" id="wound1_location" placeholder="e.g., Sacrum">
+              <input type="text" class="form-control mb-3" id="wound1_location" placeholder="e.g., Sacrum" required>
 
               <label class="form-label">Wound 1 Stage:</label>
-              <input type="text" class="form-control mb-3" id="wound1_stage" placeholder="e.g., Stage 1, Stage 2">
+              <input type="text" class="form-control mb-3" id="wound1_stage" placeholder="e.g., Stage 1, Stage 2" required>
 
               <label class="form-label">Wound 1 Picture:</label>
               <input type="file" class="form-control mb-3" id="wound1_picture">
@@ -337,10 +337,10 @@
             <h5 class="mt-4 mb-3">Wounds / Pressure Area #2</h5>
             <div class="ms-3">
               <label class="form-label">Wound 2 Location:</label>
-              <input type="text" class="form-control mb-3" id="wound2_location" placeholder="e.g., Heel">
+              <input type="text" class="form-control mb-3" id="wound2_location" placeholder="e.g., Heel" required>
 
               <label class="form-label">Wound 2 Stage:</label>
-              <input type="text" class="form-control mb-3" id="wound2_stage" placeholder="e.g., Stage 2, Stage 3">
+              <input type="text" class="form-control mb-3" id="wound2_stage" placeholder="e.g., Stage 2, Stage 3" required>
 
               <label class="form-label">Wound 2 Picture:</label>
               <input type="file" class="form-control mb-3" id="wound2_picture">
@@ -354,10 +354,10 @@
             <h5 class="mt-4 mb-3">Wounds / Pressure Area #3</h5>
             <div class="ms-3">
               <label class="form-label">Wound 3 Location:</label>
-              <input type="text" class="form-control mb-3" id="wound3_location" placeholder="e.g., Heel">
+              <input type="text" class="form-control mb-3" id="wound3_location" placeholder="e.g., Heel" required>
 
               <label class="form-label">Wound 3 Stage:</label>
-              <input type="text" class="form-control mb-3" id="wound3_stage" placeholder="e.g., Stage 2, Stage 3">
+              <input type="text" class="form-control mb-3" id="wound3_stage" placeholder="e.g., Stage 2, Stage 3" required>
 
               <label class="form-label">Wound 3 Picture:</label>
               <input type="file" class="form-control mb-3" id="wound3_picture">
@@ -370,16 +370,16 @@
             <h5 class="mt-4 mb-3">Respiratory</h5>
             <div class="ms-3">
               <label class="form-label">Effort:</label>
-              <input type="text" class="form-control mb-3" id="effort" placeholder="e.g., Normal, Labored">
+              <input type="text" class="form-control mb-3" id="effort" placeholder="e.g., Normal, Labored" required>
 
               <label class="form-label">Sounds - Left:</label>
-              <input type="text" class="form-control mb-3" id="sounds_left" placeholder="e.g., Clear, Crackles">
+              <input type="text" class="form-control mb-3" id="sounds_left" placeholder="e.g., Clear, Crackles" required>
 
               <label class="form-label">Sounds - Right:</label>
-              <input type="text" class="form-control mb-3" id="sounds_right" placeholder="e.g., Clear, Wheezing">
+              <input type="text" class="form-control mb-3" id="sounds_right" placeholder="e.g., Clear, Wheezing" required>
 
               <label class="form-label">Cough:</label>
-              <input type="text" class="form-control mb-3" id="cough" placeholder="e.g., Productive, Non-productive">
+              <input type="text" class="form-control mb-3" id="cough" placeholder="e.g., Productive, Non-productive" required>
             </div>
               </div>
             </div>
@@ -390,19 +390,19 @@
             <h5 class="mt-4 mb-3">Vital Signs</h5>
             <div class="ms-3">
               <label class="form-label">Blood Pressure:</label>
-              <input type="text" class="form-control mb-3" id="blood-pressure" placeholder="e.g., 120/80">
+              <input type="text" class="form-control mb-3" id="blood-pressure" placeholder="e.g., 120/80" required>
 
               <label class="form-label">Heart Rate (bpm):</label>
-              <input type="number" class="form-control mb-3" id="heart-rate" placeholder="e.g., 72">
+              <input type="number" class="form-control mb-3" id="heart-rate" placeholder="e.g., 72" required>
 
               <label class="form-label">Pulse Rate (bpm):</label>
-              <input type="number" class="form-control mb-3" id="pulse-rate" placeholder="e.g., 72">
+              <input type="number" class="form-control mb-3" id="pulse-rate" placeholder="e.g., 72" required>
 
               <label class="form-label">Temperature (°C):</label>
-              <input type="number" class="form-control mb-3" id="temperature" placeholder="e.g., 36.7">
+              <input type="number" class="form-control mb-3" id="temperature" placeholder="e.g., 36.7" required>
 
               <label class="form-label">Oxygen Saturation (%):</label>
-              <input type="number" class="form-control mb-3" id="oxy-sat" placeholder="e.g., 98">
+              <input type="number" class="form-control mb-3" id="oxy-sat" placeholder="e.g., 98" required>
             </div>
               </div>
             </div>
