@@ -1,0 +1,894 @@
+<html>
+
+<head>
+  <title>Patient Information</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script type="module" src="./firebase-config.js"></script>
+  <script src="login.js"></script>
+  <script src="navigation.js"></script>
+  <script src="transition.js"></script>
+  <script src="validation.js"></script>
+  <script src="calendar.js"></script>
+  <script type="module" src="patient-save.js"></script>
+  <script src="physical-save.js"></script>
+  <script src="toggle.js"></script>
+  <script type="module" src="submit.js"></script>
+  <script src="nav-transition.js"></script>
+  <script src="hellouser.js"></script>
+  
+
+</head>
+
+<body>
+  <!-- Navbar / Hamburger Menu -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm mb-4">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">G8S11-EHR</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+  
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
+          <li class="nav-item">
+            <a class="nav-link menu-link active" href="#" data-target="patient-info">Patient Information</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link menu-link" href="#" data-target="physical-assessment">Physical Assessment</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link menu-link" href="#" data-target="nursing-diagnosis">Nursing Diagnosis</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link menu-link" href="#" data-target="appointments">Appointments</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link menu-link" href="#" data-target="patient-summary">Patient Summary</a>
+          </li>
+  
+          <!-- ✅ Logout Button -->
+          <li class="nav-item ms-lg-3 mt-3 mt-lg-0">
+            <button class="btn btn-outline-dark logout-btn" id="logoutbtn">Logout</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container py-3">
+
+    <!-- title transion here-->
+    <div id="welcome" class="welcome-message">
+      <div class="welcome-user" id="welcome-user"></div>
+      <div class="welcome-right">
+        <div class="welcome-date" id="date"></div>
+        <div class="welcome-time" id="time"></div>
+      </div>
+    </div>
+    
+    
+
+    <!-- Sections -->
+    <div id="patient-info" class="section-content active">
+      <div class="card shadow-sm rounded p-4">
+        <div class="section-title">Patient Information</div>
+        <form id="patient-form">
+
+            <!-- Full Name Section -->
+            <div class="card shadow-sm rounded p-3 h-100">
+              <div class="row g-4">
+            <div class="col-md-4">
+              <label class="form-label">Given Name</label>
+              <input type="text" class="form-control" placeholder="Enter given name" id="patient-given-name" required>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label">Middle Name</label>
+              <input type="text" class="form-control" placeholder="Enter middle name" id="patient-middle-name" required>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label">Last Name</label>
+              <input type="text" class="form-control" placeholder="Enter last name" id="patient-last-name" required>
+            </div>
+    
+            <div class="col-md-4">
+              <label class="form-label">Age</label>
+              <input type="number" class="form-control" placeholder="Enter age" id="patient-age" required>
+            </div>
+    
+            <div class="col-md-4">
+              <label class="form-label">Gender</label>
+              <select class="form-select" id="patient-gender" required>
+                <option selected disabled>Choose...</option>
+                <option>Male</option>
+                <option>Female</option>
+                <option>Other</option>
+              </select>
+            </div>
+    
+            <div class="col-md-4">
+              <label class="form-label">Contact Number</label>
+              <input type="number" class="form-control" placeholder="Enter contact number" id="patient-contact" required>
+            </div>
+    
+            <div class="col-md-4">
+              <label class="form-label">Height (cm)</label>
+              <input type="number" class="form-control" id="patient-height" required  placeholder="165 cm">
+            </div>
+    
+            <div class="col-md-4">
+              <label class="form-label">Weight (kg)</label>
+              <input type="number" class="form-control" id="patient-weight" required  placeholder="53 kg">
+            </div>
+    
+            <div class="col-md-6">
+              <label class="form-label">Occupation</label>
+              <input type="text" class="form-control" id="patient-occupation" required placeholder="Student">
+            </div>
+    
+            <div class="col-md-6">
+              <label class="form-label">Lifestyle (Alcohol, Cigarette)</label>
+              <input type="text" class="form-control" id="patient-lifestyle" required placeholder="Alcohol">
+            </div>
+    
+            <div class="col-12">
+              <label class="form-label">Immunizations</label>
+              <textarea class="form-control" rows="3" id="patient-immunization"></textarea>
+            </div>
+            </div>
+
+            <!-- Buttons -->
+          </div>
+          <div class="col-12 text-end mt-4">
+            <button type="button" id="save-btn" class="btn btn-primary">Save</button>
+            <button type="button" id="edit-btn" class="btn btn-secondary">Edit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- PHYSICAL ASSESSMENT WITH CLEAN SPACING -->
+<div id="physical-assessment" class="section-content">
+  <div class="card shadow-sm rounded p-4">
+    <div class="section-title">Physical Assessment</div>
+    <form id="physical-form">
+      <div class="container-fluid">
+
+        <div class="row g-4 mb-4">
+          <!-- LEFT COLUMN -->
+
+        <div class="col-lg-6">
+          <div class="card shadow-sm rounded p-3 h-100">
+        <h5 class="mt-4 mb-3">Neurovascular Extremities</h5>
+        <div class="ms-3">
+          <label class="form-label">Extremity:</label>
+          <input type="text" class="form-control mb-3" id="extremity" placeholder="e.g., Left Arm" required>
+
+          <label class="form-label">Pain (0-10):</label>
+          <input type="number" class="form-control mb-3" id="pain" min="0" max="10" placeholder="0 = No pain" required>
+
+          <label class="form-label">Pulses:</label>
+          <input type="text" class="form-control mb-3" id="pulses" placeholder="e.g., Strong, Weak" required>
+
+          <label class="form-label">Color:</label>
+          <input type="text" class="form-control mb-3" id="neuro_color" placeholder="e.g., Pink, Pale" required>
+
+          <label class="form-label">Movement:</label>
+          <input type="text" class="form-control mb-3" id="neuro_movement" placeholder="e.g., Full Range" required>
+
+          <label class="form-label">Sensation:</label>
+          <input type="text" class="form-control mb-3" id="sensation" placeholder="e.g., Intact, Numbness" required>
+
+          <label class="form-label">Temperature (°C):</label>
+          <input type="number" class="form-control mb-3" id="neuro_temp" placeholder="e.g., 36.5" required>
+        </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="card shadow-sm rounded p-3 h-100">
+            <h5 class="mt-4 mb-3">Glasgow Coma Scale</h5>
+            <div class="ms-3">
+            <label class="form-label">Eye Opening Response:</label>
+            <input type="text" class="form-control mb-3" id="eye_response" placeholder="e.g., Spontaneous, To sound" required>
+
+            <label class="form-label">Verbal Response:</label>
+            <input type="text" class="form-control mb-3" id="verbal_response" placeholder="e.g., Oriented, Confused" required>
+
+            <label class="form-label">Motor Response:</label>
+            <input type="text" class="form-control mb-3" id="motor_response" placeholder="e.g., Obeys commands" required>
+
+            <label class="form-label">IV Site #1 Location:</label>
+            <input type="text" class="form-control mb-3" id="iv_site_1" placeholder="e.g., Arm" required>
+
+            <label class="form-label">IV Site #1 Appearance:</label>
+            <input type="text" class="form-control mb-3" id="iv_appearance_1" placeholder="e.g., Normal" required>
+
+            <label class="form-label">IV Site #2 Location:</label>
+            <input type="text" class="form-control mb-3" id="iv_site_2" placeholder="e.g., Hand, Neck" required>
+
+            <label class="form-label">IV Site #2 Appearance:</label>
+            <input type="text" class="form-control mb-3" id="iv_appearance_2" placeholder="e.g., Normal" required>
+          </div>
+          </div>
+          </div>
+
+
+          <div class="col-lg-6">
+            <div class="card shadow-sm rounded p-3 h-100">
+              <h5 class="mt-4 mb-3">Abdominal / GI / GU</h5>
+              <div class="ms-3">
+                <label class="form-label">Abdomen is:</label>
+                <input type="text" class="form-control mb-3" id="abdomen_is" placeholder="e.g., Soft, Distended" required>
+
+                <label class="form-label">Bowel Sounds:</label>
+                <input type="text" class="form-control mb-3" id="bowel_sounds" placeholder="e.g., Normal, Hyperactive" required>
+
+                <label class="form-label">Quadrants:</label>
+                <input type="text" class="form-control mb-3" id="quadrants" placeholder="e.g., RUQ, LUQ" required>
+
+                <label class="form-label">Last BM/Date:</label>
+                <input type="date" class="form-control mb-3" id="last_bm_date" required>
+
+                <label class="form-label">Stool Consistency:</label>
+                <input type="text" class="form-control mb-3" id="stool_consistency" placeholder="e.g., Soft, Hard" required>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="card shadow-sm rounded p-3 h-100">
+            <h5 class="mt-4 mb-3">Neuro</h5>
+            <div class="ms-3">
+              <label class="form-label">Mental Status:</label>
+              <input type="text" class="form-control mb-3" id="mental_status" placeholder="e.g., Alert, Oriented" required>
+
+              <label class="form-label">Pupils:</label>
+              <input type="text" class="form-control mb-3" id="pupils" placeholder="e.g., Equal, Reactive" required>
+
+              <label class="form-label">Orientation:</label>
+              <input type="text" class="form-control mb-3" id="orientation" placeholder="e.g., Alert, Oriented" required>
+
+              <label class="form-label">Pupil Size - Right (mm):</label>
+              <input type="number" class="form-control mb-3" id="pupil_size_right" placeholder="mm" required>
+
+              <label class="form-label">Pupil Size - Left (mm):</label>
+              <input type="number" class="form-control mb-3" id="pupil_size_left" placeholder="mm" required>
+
+              <label class="form-label">Affect:</label>
+              <input type="text" class="form-control mb-3" id="affect" placeholder="e.g., Calm, Anxious" required>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="card shadow-sm rounded p-3 h-100">
+            <h5 class="mt-4 mb-3">Cardiovascular</h5>
+            <div class="ms-3">
+              <label class="form-label">Central Pulses:</label>
+              <input type="text" class="form-control mb-3" id="central_pulses" placeholder="e.g., Strong, Weak, Regular" required>
+
+              <label class="form-label">Heart Sounds:</label>
+              <input type="text" class="form-control mb-3" id="heart_sounds" placeholder="e.g., Normal S1 S2, Murmur" required>
+
+              <label class="form-label">Peripheral Pulses:</label>
+              <input type="text" class="form-control mb-3" id="peripheral_pulses" placeholder="e.g., Palpable, Thready" required>
+            </div>
+          </div>
+        </div>
+ 
+            <div class="col-lg-6">
+              <div class="card shadow-sm rounded p-3 h-100">
+                <h5 class="mt-4 mb-3">Musculoskeletal</h5>
+                <div class="ms-3">
+                  <label class="form-label">Movement:</label>
+                  <input type="text" class="form-control mb-3" id="movement" placeholder="e.g., Full, Limited" required>
+
+                  <label class="form-label">Contracture:</label>
+                  <input type="text" class="form-control mb-3" id="contracture" placeholder="e.g., None, Present" required>
+
+                  <label class="form-label">Location:</label>
+                  <input type="text" class="form-control mb-3" id="musculo_location" placeholder="e.g., Left Arm, Right Leg" required>
+                </div>
+              </div>
+            </div>
+
+          <!-- RIGHT COLUMN -->
+          <div class="col-lg-6">
+            <div class="card shadow-sm rounded p-3 h-100">
+            <h5 class="mt-4 mb-3">Integumentary</h5>
+            <div class="ms-3">
+              <label class="form-label">Skin Color:</label>
+              <input type="text" class="form-control mb-3" id="skin_color" placeholder="e.g., Pink, Pale, Cyanotic" required>
+
+              <label class="form-label">Temperature (°C):</label>
+              <input type="number" class="form-control mb-3" id="skin_temp" placeholder="e.g., 36.5" required>
+
+              <label class="form-label">Type of Wound:</label>
+              <input type="text" class="form-control mb-3" id="wound_type" placeholder="e.g., Surgical, Pressure Ulcer" required>
+            </div>
+          </div>
+            </div>
+ 
+
+            <div class="col-lg-6">
+              <div class="card shadow-sm rounded p-3 h-100">
+            <!-- Repeat wound section -->
+            <h5 class="mt-4 mb-3">Wounds / Pressure Area #1</h5>
+            <div class="ms-3">
+              <label class="form-label">Wound 1 Location:</label>
+              <input type="text" class="form-control mb-3" id="wound1_location" placeholder="e.g., Sacrum" required>
+
+              <label class="form-label">Wound 1 Stage:</label>
+              <input type="text" class="form-control mb-3" id="wound1_stage" placeholder="e.g., Stage 1, Stage 2" required>
+
+              <label class="form-label">Wound 1 Picture:</label>
+              <input type="file" class="form-control mb-3" id="wound1_picture">
+            </div>
+              </div>
+            </div>
+
+            
+            <div class="col-lg-6">
+              <div class="card shadow-sm rounded p-3 h-100">
+            <h5 class="mt-4 mb-3">Wounds / Pressure Area #2</h5>
+            <div class="ms-3">
+              <label class="form-label">Wound 2 Location:</label>
+              <input type="text" class="form-control mb-3" id="wound2_location" placeholder="e.g., Heel" required>
+
+              <label class="form-label">Wound 2 Stage:</label>
+              <input type="text" class="form-control mb-3" id="wound2_stage" placeholder="e.g., Stage 2, Stage 3" required>
+
+              <label class="form-label">Wound 2 Picture:</label>
+              <input type="file" class="form-control mb-3" id="wound2_picture">
+            </div>
+              </div>
+            </div>
+
+
+            <div class="col-lg-6">
+              <div class="card shadow-sm rounded p-3 h-100">
+            <h5 class="mt-4 mb-3">Wounds / Pressure Area #3</h5>
+            <div class="ms-3">
+              <label class="form-label">Wound 3 Location:</label>
+              <input type="text" class="form-control mb-3" id="wound3_location" placeholder="e.g., Heel" required>
+
+              <label class="form-label">Wound 3 Stage:</label>
+              <input type="text" class="form-control mb-3" id="wound3_stage" placeholder="e.g., Stage 2, Stage 3" required>
+
+              <label class="form-label">Wound 3 Picture:</label>
+              <input type="file" class="form-control mb-3" id="wound3_picture">
+            </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <div class="card shadow-sm rounded p-3 h-100">
+            <h5 class="mt-4 mb-3">Respiratory</h5>
+            <div class="ms-3">
+              <label class="form-label">Effort:</label>
+              <input type="text" class="form-control mb-3" id="effort" placeholder="e.g., Normal, Labored" required>
+
+              <label class="form-label">Sounds - Left:</label>
+              <input type="text" class="form-control mb-3" id="sounds_left" placeholder="e.g., Clear, Crackles" required>
+
+              <label class="form-label">Sounds - Right:</label>
+              <input type="text" class="form-control mb-3" id="sounds_right" placeholder="e.g., Clear, Wheezing" required>
+
+              <label class="form-label">Cough:</label>
+              <input type="text" class="form-control mb-3" id="cough" placeholder="e.g., Productive, Non-productive" required>
+            </div>
+              </div>
+            </div>
+
+
+            <div class="col-lg-6">
+              <div class="card shadow-sm rounded p-3 h-100">
+            <h5 class="mt-4 mb-3">Vital Signs</h5>
+            <div class="ms-3">
+              <label class="form-label">Blood Pressure:</label>
+              <input type="text" class="form-control mb-3" id="blood-pressure" placeholder="e.g., 120/80" required>
+
+              <label class="form-label">Heart Rate (bpm):</label>
+              <input type="number" class="form-control mb-3" id="heart-rate" placeholder="e.g., 72" required>
+
+              <label class="form-label">Pulse Rate (bpm):</label>
+              <input type="number" class="form-control mb-3" id="pulse-rate" placeholder="e.g., 72" required>
+
+              <label class="form-label">Temperature (°C):</label>
+              <input type="number" class="form-control mb-3" id="temperature" placeholder="e.g., 36.7" required>
+
+              <label class="form-label">Oxygen Saturation (%):</label>
+              <input type="number" class="form-control mb-3" id="oxy-sat" placeholder="e.g., 98" required>
+            </div>
+              </div>
+            </div>
+            <div class="col-12 text-end mt-4">
+              <button type="submit" id="physical-save-btn" class="btn btn-primary">Save</button>
+              <button type="button" id="physical-edit-btn" class="btn btn-secondary">Edit</button>
+            </div>
+          </div> <!-- END RIGHT COLUMN -->
+          
+        </div> <!-- END ROW -->
+      </div> <!-- END CONTAINER -->
+    </form>
+  </div>
+
+    
+
+    <div id="nursing-diagnosis" class="section-content">
+      <div class="card shadow-sm rounded p-4">
+      <div class="section-title">Nursing Diagnosis</div>
+      <p class="text-muted">Nursing Diagnosis content goes here...</p>
+      </div>
+    </div>
+    
+
+    <div id="patient-summary" class="section-content">
+      <div class="card shadow-sm rounded p-4">
+      <div class="section-title">Patient Summary</div>
+      
+      <div class="mb-4">
+        <label class="form-label">Select Patient</label>
+        <select class="form-select" id="patient-select">
+          <option value="" disabled selected>Select a patient</option>
+        </select>
+      </div>
+
+      <div class="card shadow-sm rounded p-4 mb-4">
+        <div class="row g-4">
+    
+          <!-- Patient Information -->
+          <div class="col-12 mt-4">
+            <h5>Patient Information</h5>
+          </div>
+
+          <div class="col-md-4">
+            <label class="form-label">Given Name</label>
+            <input type="text" class="form-control" id="summary-given-name" readonly>
+          </div>
+    
+          <div class="col-md-4">
+            <label class="form-label">Middle Name</label>
+            <input type="text" class="form-control" id="summary-middle-name" readonly>
+          </div>
+    
+          <div class="col-md-4">
+            <label class="form-label">Last Name</label>
+            <input type="text" class="form-control" id="summary-last-name" readonly>
+          </div>
+    
+          <div class="col-md-3">
+            <label class="form-label">Age</label>
+            <input type="text" class="form-control" id="summary-age" readonly>
+          </div>
+    
+          <div class="col-md-3">
+            <label class="form-label">Gender</label>
+            <input type="text" class="form-control" id="summary-gender" readonly>
+          </div>
+    
+          <div class="col-md-6">
+            <label class="form-label">Contact Number</label>
+            <input type="text" class="form-control" id="summary-contact" readonly>
+          </div>
+    
+          <div class="col-md-4">
+            <label class="form-label">Height (cm)</label>
+            <input type="text" class="form-control" id="summary-height" readonly>
+          </div>
+    
+          <div class="col-md-4">
+            <label class="form-label">Weight (kg)</label>
+            <input type="text" class="form-control" id="summary-weight" readonly>
+          </div>
+    
+          <div class="col-md-4">
+            <label class="form-label">Occupation</label>
+            <input type="text" class="form-control" id="summary-occupation" readonly>
+          </div>
+    
+          <div class="col-md-6">
+            <label class="form-label">Lifestyle (Alcohol, Cigarette)</label>
+            <input type="text" class="form-control" id="summary-lifestyle" readonly>
+          </div>
+    
+          <div class="col-12">
+            <label class="form-label">Immunizations</label>
+            <input type="text" class="form-control" id="summary-immunization" readonly>
+          </div>
+        </div>
+      </div>
+      <div class="card shadow-sm rounded p-4 mb-4">
+        <div class="row g-4">
+          <div class="col-12 mt-4">
+            <h5>Physical Assessment</h5>
+          </div>
+
+          <div class="col-md-4">
+            <label class="form-label">Mental Status</label>
+            <input type="text" class="form-control" id="summary-mental" readonly>
+          </div>
+    
+          <div class="col-md-4">
+            <label class="form-label">Orientation</label>
+            <input type="text" class="form-control" id="summary-orientation" readonly>
+          </div>
+    
+          <div class="col-md-4">
+            <label class="form-label">Pupils</label>
+            <input type="text" class="form-control" id="summary-pupils" readonly>
+          </div>
+    
+          <div class="col-md-6">
+            <label class="form-label">Pupil Size (Right)</label>
+            <input type="text" class="form-control" id="summary-pupil-right" readonly>
+          </div>
+    
+          <div class="col-md-6">
+            <label class="form-label">Pupil Size (Left)</label>
+            <input type="text" class="form-control" id="summary-pupil-left" readonly>
+          </div>
+    
+          <div class="col-md-6">
+            <label class="form-label">Affect</label>
+            <input type="text" class="form-control" id="summary-affect" readonly>
+          </div>
+        </div>
+      </div>
+      <div class="card shadow-sm rounded p-4 mb-4">
+        <div class="row g-4">
+          <!-- Cardiovascular -->
+          <div class="col-12 mt-4">
+            <h5>Cardiovascular</h5>
+          </div>
+    
+          <div class="col-md-4">
+            <label class="form-label">Central Pulses</label>
+            <input type="text" class="form-control" id="summary-central-pulses" readonly>
+          </div>
+    
+          <div class="col-md-4">
+            <label class="form-label">Heart Sounds</label>
+            <input type="text" class="form-control" id="summary-heart-sounds" readonly>
+          </div>
+    
+          <div class="col-md-4">
+            <label class="form-label">Peripheral Pulses</label>
+            <input type="text" class="form-control" id="summary-peripheral-pulses" readonly>
+          </div>
+          </div>
+      </div>
+    
+          <div class="card shadow-sm rounded p-4 mb-4">
+            <div class="row g-4">
+          <!-- Abdomen & Bowel -->
+          <div class="col-12 mt-4">
+            <h5>Abdomen & Bowel</h5>
+          </div>
+    
+          <div class="col-md-4">
+            <label class="form-label">Abdomen</label>
+            <input type="text" class="form-control" id="summary-abdomen" readonly>
+          </div>
+    
+          <div class="col-md-4">
+            <label class="form-label">Bowel Sounds</label>
+            <input type="text" class="form-control" id="summary-bowel-sounds" readonly>
+          </div>
+    
+          <div class="col-md-4">
+            <label class="form-label">Quadrants</label>
+            <input type="text" class="form-control" id="summary-quadrants" readonly>
+          </div>
+    
+          <div class="col-md-6">
+            <label class="form-label">Last BM Date</label>
+            <input type="text" class="form-control" id="summary-bm-date" readonly>
+          </div>
+    
+          <div class="col-md-6">
+            <label class="form-label">Stool Consistency</label>
+            <input type="text" class="form-control" id="summary-stool" readonly>
+          </div>
+    </div>
+    </div>
+
+    <div class="card shadow-sm rounded p-4 mb-4">
+      <div class="row g-4">
+          <!-- Musculoskeletal -->
+          <div class="col-12 mt-4">
+            <h5>Musculoskeletal</h5>
+          </div>
+    
+          <div class="col-md-4">
+            <label class="form-label">Movement</label>
+            <input type="text" class="form-control" id="summary-movement" readonly>
+          </div>
+    
+          <div class="col-md-4">
+            <label class="form-label">Contracture</label>
+            <input type="text" class="form-control" id="summary-contracture" readonly>
+          </div>
+    
+          <div class="col-md-4">
+            <label class="form-label">Location</label>
+            <input type="text" class="form-control" id="summary-musculo-location" readonly>
+          </div>
+      </div>
+    </div>
+
+    <div class="card shadow-sm rounded p-4 mb-4">
+      <div class="row g-4">
+          <!-- Neuro Check -->
+          <div class="col-12 mt-4">
+            <h5>Neuro Check</h5>
+          </div>
+    
+          <div class="col-md-4">
+            <label class="form-label">Eye Response</label>
+            <input type="text" class="form-control" id="summary-eye" readonly>
+          </div>
+    
+          <div class="col-md-4">
+            <label class="form-label">Verbal Response</label>
+            <input type="text" class="form-control" id="summary-verbal" readonly>
+          </div>
+    
+          <div class="col-md-4">
+            <label class="form-label">Motor Response</label>
+            <input type="text" class="form-control" id="summary-motor" readonly>
+          </div>
+          </div>
+          </div>
+          
+          <div class="card shadow-sm rounded p-4 mb-4">
+            <div class="row g-4">
+          <!-- Respiratory -->
+          <div class="col-12 mt-4">
+            <h5>Respiratory</h5>
+          </div>
+    
+          <div class="col-md-3">
+            <label class="form-label">Effort</label>
+            <input type="text" class="form-control" id="summary-effort" readonly>
+          </div>
+    
+          <div class="col-md-3">
+            <label class="form-label">Sounds Left</label>
+            <input type="text" class="form-control" id="summary-sounds-left" readonly>
+          </div>
+    
+          <div class="col-md-3">
+            <label class="form-label">Sounds Right</label>
+            <input type="text" class="form-control" id="summary-sounds-right" readonly>
+          </div>
+    
+          <div class="col-md-3">
+            <label class="form-label">Cough</label>
+            <input type="text" class="form-control" id="summary-cough" readonly>
+          </div>
+    </div>
+    </div>
+          <!-- Skin & Wounds -->
+          <div class="card shadow-sm rounded p-4 mb-4">
+            <div class="row g-4">
+
+              <div class="col-12 mt-4">
+                <h5>Integumentary</h5>
+              </div>
+        
+          <div class="col-md-4">
+            <label class="form-label">Skin Color</label>
+            <input type="text" class="form-control" id="summary-skin-color" readonly>
+          </div>
+    
+          <div class="col-md-4">
+            <label class="form-label">Moisture</label>
+            <input type="text" class="form-control" id="summary-skin-temp" readonly>
+          </div>
+
+          <div class="col-md-4">
+            <label class="form-label">Type of Wound</label>
+            <input type="text" class="form-control" id="summary-type-of-wound" readonly>
+          </div>
+          </div>
+          </div>
+
+          <div class="card shadow-sm rounded p-4 mb-4">
+            <div class="row g-4">
+          <div class="col-12 mt-4">
+            <h5>Wounds / Pressure Area #1</h5>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">Location:</label>
+            <input type="text" class="form-control" id="summary-location-wound1" readonly>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">Stage:</label>
+            <input type="text" class="form-control" id="summary-stage-wound1" readonly>
+          </div>
+          <div class="col-md-4 d-flex flex-column align-items-start">
+            <label class="form-label">Picture:</label>
+            <img id="summary-wound1-display" src="https://placehold.co/600x400?text=N/A" alt="Wound Image" class="img-fluid rounded border" style="max-width: 75%; height: auto;">
+          </div>
+          </div>
+          </div>
+
+
+          <div class="card shadow-sm rounded p-4 mb-4">
+            <div class="row g-4">
+          <div class="col-12 mt-4">
+            <h5>Wounds / Pressure Area #2</h5>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">Location:</label>
+            <input type="text" class="form-control" id="summary-location-wound2" readonly>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">Stage:</label>
+            <input type="text" class="form-control" id="summary-stage-wound2" readonly>
+          </div>
+          <div class="col-md-4 d-flex flex-column align-items-start">
+            <label class="form-label">Picture:</label>
+            <img id="summary-wound2-display" src="https://placehold.co/600x400?text=N/A" alt="Wound Image" class="img-fluid rounded border" style="max-width: 75%; height: auto;">
+          </div>
+          </div>
+          </div>
+          
+          <div class="card shadow-sm rounded p-4 mb-4">
+            <div class="row g-4">
+          <!-- Wound / Pressure Area #3 -->
+          <div class="col-12 mt-4">
+            <h5>Wounds / Pressure Area #3</h5>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">Location:</label>
+            <input type="text" class="form-control" id="summary-location-wound3" readonly>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">Stage:</label>
+            <input type="text" class="form-control" id="summary-stage-wound3" readonly>
+          </div>
+          <div class="col-md-4 d-flex flex-column align-items-start">
+            <label class="form-label">Picture:</label>
+            <img id="summary-wound3-display" src="https://placehold.co/600x400?text=N/A" alt="Wound Image" class="img-fluid rounded border" style="max-width: 75%; height: auto;">
+          </div>
+          </div>
+          </div>
+    
+          <div class="card shadow-sm rounded p-4 mb-4">
+            <div class="row g-4">
+          <!-- Extremities & Pain -->
+          <div class="col-12 mt-4">
+            <h5>Extremities & Pain</h5>
+          </div>
+    
+          <div class="col-md-4">
+            <label class="form-label">Extremity</label>
+            <input type="text" class="form-control" id="summary-extremity" readonly>
+          </div>
+    
+          <div class="col-md-4">
+            <label class="form-label">Pain</label>
+            <input type="text" class="form-control" id="summary-pain" readonly>
+          </div>
+    
+          <div class="col-md-4">
+            <label class="form-label">Pulses</label>
+            <input type="text" class="form-control" id="summary-pulses" readonly>
+          </div>
+    
+          <div class="col-md-4">
+            <label class="form-label">Neuro Color</label>
+            <input type="text" class="form-control" id="summary-neuro-color" readonly>
+          </div>
+    
+          <div class="col-md-4">
+            <label class="form-label">Neuro Movement</label>
+            <input type="text" class="form-control" id="summary-neuro-movement" readonly>
+          </div>
+    
+          <div class="col-md-4">
+            <label class="form-label">Sensation</label>
+            <input type="text" class="form-control" id="summary-sensation" readonly>
+          </div>
+    
+          <div class="col-md-4">
+            <label class="form-label">Neuro Temp</label>
+            <input type="text" class="form-control" id="summary-neuro-temp" readonly>
+          </div>
+          </div>
+          </div>
+
+          <div class="card shadow-sm rounded p-4 mb-4">
+            <div class="row g-4">
+          <!-- Vital Signs -->
+          <div class="col-12 mt-4">
+            <h5>Vital Signs</h5>
+          </div>
+    
+          <div class="col-md-4">
+            <label class="form-label">Blood Pressure</label>
+            <input type="text" class="form-control" id="summary-bp" readonly>
+          </div>
+    
+          <div class="col-md-4">
+            <label class="form-label">Heart Rate</label>
+            <input type="text" class="form-control" id="summary-hr" readonly>
+          </div>
+    
+          <div class="col-md-4">
+            <label class="form-label">Pulse Rate</label>
+            <input type="text" class="form-control" id="summary-pr" readonly>
+          </div>
+    
+          <div class="col-md-4">
+            <label class="form-label">Temperature</label>
+            <input type="text" class="form-control" id="summary-temp" readonly>
+          </div>
+    
+          <div class="col-md-4">
+            <label class="form-label">Oxygen Saturation</label>
+            <input type="text" class="form-control" id="summary-oxy" readonly>
+          </div>
+          </div>
+          </div>
+
+          <div class="card shadow-sm rounded p-4 mb-4">
+            <div class="row g-4">
+          <!-- Appointment -->
+          <div class="col-12 mt-4">
+            <h5>Appointment</h5>
+          </div>
+    
+          <div class="col-md-6">
+            <label class="form-label">Date & Time</label>
+            <input type="text" class="form-control" id="summary-appt-date" readonly>
+          </div>
+    
+          <div class="col-md-6">
+            <label class="form-label">Reason</label>
+            <input type="text" class="form-control" id="summary-appt-reason" readonly>
+          </div>
+          </div>
+          </div>
+        </div>
+      </div>
+   
+    
+        
+    
+
+    <div id="appointments" class="section-content">
+      <div class="card shadow-sm rounded p-4">
+      <div class="section-title">Schedule Appointment</div> 
+      <div class="card shadow-sm rounded p-4">
+        <form id="appointment-form">
+          <div class="mb-4">
+            <label for="appointmentDateTime" class="form-label">Select Date & Time</label>
+          
+            <input type="datetime-local" class="form-control" id="appointmentDateTime" required>
+          </div>
+    
+          <div class="mb-4">
+            <label for="appointmentReason" class="form-label">Reason for Appointment</label>
+            <textarea class="form-control" id="appointmentReason" rows="3" placeholder="Optional"></textarea>
+          </div>
+        </div>
+          <div class="d-grid col-12 mt-4">
+            <button type="submit" class="btn btn-apple" id="submit">Submit</button>
+          </div>
+        </form>
+      </div>
+      </div>
+    </div>
+    
+  </div>
+
+</body>
+
+</html>
