@@ -290,3 +290,28 @@
     border: 2px solid #ffcc80 !important; 
     transition: background-color 0.3s ease-in-out, border 0.3s ease-in-out;
 }
+/* title */
+.group-code-wrapper {
+  text-align: center;
+}
+
+.group-code {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #1f2937; /* dark gray-blue */
+
+  padding: 6px 20px;
+  border-radius: 999px;
+  display: inline-block;
+  letter-spacing: 1px;
+
+}
+
+.group-subtext {
+  margin-top: 4px;
+  font-size: 0.9rem;
+  color: #4b5563; /* medium neutral gray */
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
